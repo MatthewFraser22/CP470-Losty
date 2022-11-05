@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".PostActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_horizontal"
+                android:text="@string/lost_post_title"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/red"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/lost_image_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center_horizontal"
+                android:padding="16dp"
+                android:text="@string/item_image"></TextView>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="50dp"
+                android:src="@android:drawable/ic_menu_report_image"></ImageButton>
+
+            <EditText
+                android:id="@+id/lost_item_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/item_name"
+                android:inputType="textShortMessage"></EditText>
+
+            <EditText
+                android:id="@+id/lost_item_brand_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/item_brand"
+                android:inputType="textShortMessage"></EditText>
+
+            <EditText
+                android:id="@+id/lost_item_color_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/item_color"
+                android:inputType="textShortMessage"></EditText>
+
+            <EditText
+                android:id="@+id/lost_item_description_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/item_description"
+                android:inputType="textMultiLine"></EditText>
+
+            <EditText
+                android:id="@+id/lost_item_other_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/item_other"
+                android:inputType="textShortMessage"></EditText>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/post_button_red"
+                android:gravity="center_horizontal"
+                android:text="@string/post_button"
+                android:textStyle="bold"
+                app:cornerRadius="10dp"></Button>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CP470-Losty</string>
+    <string name="lost_post_title">Lost an item ? Post it here.</string>
+    <string name="item_name">item name</string>
+    <string name="item_brand">item brand</string>
+    <string name="item_color">color</string>
+    <string name="item_description">description</string>
+    <string name="item_other">other</string>
+    <string name="item_image">Select a photo of your lost item</string>
+    <string name="post_button">Post Lost Item</string>
 </resources>
