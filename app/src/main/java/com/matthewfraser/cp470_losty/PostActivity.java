@@ -4,15 +4,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class PostActivity extends AppCompatActivity {
     protected static String TAG = "PostActivity";
@@ -67,12 +71,14 @@ public class PostActivity extends AppCompatActivity {
                     if (insertData == true) {
                         Log.i("TAG", "TESTING - data saved");
 
-                        // 2. display a loading symbol
-                        // 3. Save Display a snackbar saying the post was completed successfully
-                        // 4. close the activity and move to the post "main page"
+                        // TODO - Display loading indicator
+
+                        Snackbar.make(getWindow().getDecorView().findViewById(R.id.postActivity), "Successfully uploaded post", Snackbar.LENGTH_LONG).show();
+                        finish();
                     } else {
                         Log.i("TAG", "TESTING - data NOT saved");
-                        // snack or toast showing error
+                        // TODO - Display loading indicator but it fails
+                        Snackbar.make(getWindow().getDecorView().findViewById(R.id.postActivity), "Error: inserting data - data not saved", Snackbar.LENGTH_LONG).show();
                     }
 
                 }
@@ -91,6 +97,7 @@ public class PostActivity extends AppCompatActivity {
         if (isFieldEmpty == true) {
 
             // TODO - Custom alert dialog box
+            
             Log.i(TAG, "Post is NOT valid");
             return false;
         } else {
