@@ -4,17 +4,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -28,6 +32,11 @@ public class PostActivity extends AppCompatActivity {
     Button postButton;
     PostDatabaseHelper postDatabase;
     String lostItemPhotoString = "";
+
+    // Progress bar
+    ProgressDialog progressBar;
+    private int progressBarStatus = 0;
+    private Handler progressHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,18 +77,63 @@ public class PostActivity extends AppCompatActivity {
 
                     Boolean insertData = postDatabase.addData(lostItemPhotoString, name, brand, color, description, other);
 
-                    if (insertData == true) {
-                        Log.i("TAG", "TESTING - data saved");
+                    progressBar = new ProgressDialog(v.getContext());
+                    progressBar.setCancelable(true);
+                    progressBar.setMessage("Posting...");
+                    progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    progressBar.setProgress(0);
+                    progressBar.setMax(100);
+                    progressBar.show();
 
-                        // TODO - Display loading indicator
+                    progressBarStatus = 0;
 
-                        Snackbar.make(getWindow().getDecorView().findViewById(R.id.postActivity), "Successfully uploaded post", Snackbar.LENGTH_LONG).show();
-                        finish();
-                    } else {
-                        Log.i("TAG", "TESTING - data NOT saved");
-                        // TODO - Display loading indicator but it fails
-                        Snackbar.make(getWindow().getDecorView().findViewById(R.id.postActivity), "Error: inserting data - data not saved", Snackbar.LENGTH_LONG).show();
-                    }
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            while (progressBarStatus < 100) {
+                                progressBarStatus += 1;
+
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+
+                                progressHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        progressBar.setProgress(progressBarStatus);
+                                    }
+                                });
+
+                                progressBar.setProgress(progressBarStatus);
+
+                                if (progressBarStatus >= 100 && insertData == true) {
+                                    Log.i("TAG", "TESTING - data saved");
+                                    progressBar.dismiss();
+                                } else if (progressBarStatus >= 50 && insertData == false) {
+                                    Log.i("TAG", "TESTING - data NOT saved");
+                                    progressBar.dismiss();
+                                }
+
+                                progressBar.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                    @Override
+                                    public void onDismiss(DialogInterface dialog) {
+                                        finish();
+                                        String toastText = "";
+
+                                        if (insertData == true) {
+                                            toastText = "Successfully uploaded post";
+                                        } else {
+                                            toastText = "Error: inserting data - data not saved";
+                                        }
+
+                                        Toast.makeText(PostActivity.this, toastText, Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        }
+                    }).start();
 
                 }
             }
@@ -97,7 +151,7 @@ public class PostActivity extends AppCompatActivity {
         if (isFieldEmpty == true) {
 
             // TODO - Custom alert dialog box
-            
+
             Log.i(TAG, "Post is NOT valid");
             return false;
         } else {
