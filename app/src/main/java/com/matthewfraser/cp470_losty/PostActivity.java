@@ -134,7 +134,6 @@ public class PostActivity extends AppCompatActivity {
                             }
                         }
                     }).start();
-
                 }
             }
         });
@@ -146,17 +145,15 @@ public class PostActivity extends AppCompatActivity {
         Boolean color = colorEditText.getText().toString().isEmpty();
         Boolean description = descriptionEditText.getText().toString().isEmpty();
 
-        Boolean isFieldEmpty = name && brand && color && description && lostItemPhotoString.isEmpty() == false;
-
-        if (isFieldEmpty == true) {
-
-            // TODO - Custom alert dialog box
-
-            Log.i(TAG, "Post is NOT valid");
-            return false;
-        } else {
+        Boolean isValid = name == false && brand == false && color == false && description == false && lostItemPhotoString.isEmpty() == false;
+        
+        if (isValid == true) {
             Log.i(TAG, "Post is valid");
             return true;
+        } else {
+            Snackbar.make(getWindow().getDecorView().findViewById(R.id.postActivity), "Please fill out all entries", Snackbar.LENGTH_LONG).show();
+            Log.i(TAG, "Post is NOT valid");
+            return false;
         }
     }
 
