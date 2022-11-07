@@ -59,7 +59,7 @@ public class PostActivity extends AppCompatActivity {
                 Intent photoGalleryintent = new Intent();
                 photoGalleryintent.setType("image/*");
                 photoGalleryintent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(photoGalleryintent, "Select Picture"), REQUEST_CODE);
+                startActivityForResult(Intent.createChooser(photoGalleryintent, getString(R.string.select_picture)), REQUEST_CODE);
             }
         });
 
@@ -79,7 +79,7 @@ public class PostActivity extends AppCompatActivity {
 
                     progressBar = new ProgressDialog(v.getContext());
                     progressBar.setCancelable(true);
-                    progressBar.setMessage("Posting...");
+                    progressBar.setMessage(getString(R.string.posting));
                     progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                     progressBar.setProgress(0);
                     progressBar.setMax(100);
@@ -94,7 +94,7 @@ public class PostActivity extends AppCompatActivity {
                                 progressBarStatus += 1;
 
                                 try {
-                                    Thread.sleep(100);
+                                    Thread.sleep(50);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
@@ -123,9 +123,9 @@ public class PostActivity extends AppCompatActivity {
                                         String toastText = "";
 
                                         if (insertData == true) {
-                                            toastText = "Successfully uploaded post";
+                                            toastText = getString(R.string.successfully_posted);
                                         } else {
-                                            toastText = "Error: inserting data - data not saved";
+                                            toastText = getString(R.string.error_posting);
                                         }
 
                                         Toast.makeText(PostActivity.this, toastText, Toast.LENGTH_SHORT).show();
@@ -146,12 +146,12 @@ public class PostActivity extends AppCompatActivity {
         Boolean description = descriptionEditText.getText().toString().isEmpty();
 
         Boolean isValid = name == false && brand == false && color == false && description == false && lostItemPhotoString.isEmpty() == false;
-        
+
         if (isValid == true) {
             Log.i(TAG, "Post is valid");
             return true;
         } else {
-            Snackbar.make(getWindow().getDecorView().findViewById(R.id.postActivity), "Please fill out all entries", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(getWindow().getDecorView().findViewById(R.id.postActivity), getString(R.string.error_form_not_valid), Snackbar.LENGTH_LONG).show();
             Log.i(TAG, "Post is NOT valid");
             return false;
         }
