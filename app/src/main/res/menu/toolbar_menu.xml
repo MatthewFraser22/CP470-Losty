@@ -10,7 +10,6 @@
         app:showAsAction="always" />
 
     <item android:id="@+id/action_two"
-
         android:title="Two"
         android:icon="@drawable/ic_post"
         android:orderInCategory="2"
