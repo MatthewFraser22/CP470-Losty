@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">CP470-Losty</string>
+    <string name="lost_post_title">Lost an item ? Post it here.</string>
+    <string name="item_name">item name</string>
+    <string name="item_brand">item brand</string>
+    <string name="item_color">color</string>
+    <string name="item_description">description</string>
+    <string name="item_other">other</string>
+    <string name="item_image">Select a photo of your lost item</string>
+    <string name="post_button">Post Lost Item</string>
+    <string name="select_picture">Select Picture</string>
+    <string name="posting">Posting...</string>
+    <string name="successfully_posted">"Successfully uploaded post"</string>
+    <string name="error_posting">Error: inserting data - data not saved</string>
+    <string name="error_form_not_valid">Please fill out all entries</string>
 </resources>
