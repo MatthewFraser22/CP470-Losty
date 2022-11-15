@@ -21,10 +21,14 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.matthewfraser.cp470_losty.databinding.ActivityHelpBinding;
+import com.matthewfraser.cp470_losty.databinding.ActivityPostBinding;
 
 public class PostActivity extends AppCompatActivity {
     protected static String TAG = "PostActivity";
     private final int REQUEST_CODE = 123;
+
+    ActivityPostBinding binding;
 
     EditText itemNameEditText, brandNameEditText, colorEditText,
             descriptionEditText, otherEditText;
@@ -136,6 +140,29 @@ public class PostActivity extends AppCompatActivity {
                     }).start();
                 }
             }
+        });
+
+        binding = ActivityPostBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.action_one:
+//
+
+                    break;
+                case R.id.action_two:
+
+                    break;
+                case R.id.action_three:
+
+                    break;
+                case R.id.action_four:
+                    Intent help = new Intent(PostActivity.this, HelpActivity.class);
+                    startActivity(help);
+
+                    break;
+            }
+            return true;
         });
     }
 
