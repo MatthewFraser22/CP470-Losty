@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.sql.SQLException;
+
 public class AccountCreation extends AppCompatActivity {
 
     protected static final String ACTIVITY_NAME = "AccountCreation";
@@ -17,6 +19,7 @@ public class AccountCreation extends AppCompatActivity {
     private EditText editEmail;
     private EditText editUsername;
     private EditText editPassword;
+    private boolean uniqueUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +47,26 @@ public class AccountCreation extends AppCompatActivity {
 
 
                 if(name.length() != 0 && email.length() != 0 && username.length() != 0 && password.length() != 0) {
-
-                    dbHandler.addNewAccount(name, email, username, password);
-
-                    Toast.makeText(AccountCreation.this, "Account has been created", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(AccountCreation.this, MainActivity.class);
-                    startActivity(intent);
+                    if(email.contains("@") && email.contains(".")) {
+                        if(password.length() >= 8) {
+                            if(password.matches(".*\\d.*")) {
+                                uniqueUsername = dbHandler.addNewAccount(name, email, username, password);
+                                if (uniqueUsername) {
+                                    Toast.makeText(AccountCreation.this, "Account has been created", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(AccountCreation.this, Login.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(AccountCreation.this, "Username is already taken", Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                Toast.makeText(AccountCreation.this, "Password must contain a number.", Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(AccountCreation.this, "Password must be 8 characters or longer", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(AccountCreation.this, "Email must contain '@' and a '.'", Toast.LENGTH_LONG).show();
+                    }
                 }
 
             }

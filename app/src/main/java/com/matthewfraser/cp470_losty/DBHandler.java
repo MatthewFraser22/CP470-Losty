@@ -3,9 +3,11 @@ package com.matthewfraser.cp470_losty;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
@@ -32,13 +34,13 @@ public class DBHandler extends SQLiteOpenHelper {
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME_COL + " TEXT,"
                 + EMAIL_COL + " TEXT,"
-                + USERNAME_COL + " TEXT,"
+                + USERNAME_COL + " TEXT UNIQUE,"
                 + PASSWORD_COL + " TEXT)";
 
         db.execSQL(query);
     }
 
-    public void addNewAccount(String name, String email, String username, String password) {
+    public boolean addNewAccount(String name, String email, String username, String password) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -49,10 +51,17 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(USERNAME_COL, username);
         values.put(PASSWORD_COL, password);
 
-        db.insert(TABLE_NAME, null, values);
+        try {
+            db.insertOrThrow(TABLE_NAME, null, values);
+            System.out.println("dfhakfkajhgfdlajgas;'gjas;lgjm;agjlm;lg");
+        } catch (Throwable ex) {
+            System.out.println(ex);
+            db.close();
+            return false;
+        }
 
         db.close();
-
+        return true;
     }
 
 
