@@ -9,7 +9,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,7 +34,11 @@ public class HelpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setTitle("Help Page");
         setContentView(R.layout.activity_help);
+
+
 
         post = findViewById(R.id.post);
         feed = findViewById(R.id.feed);

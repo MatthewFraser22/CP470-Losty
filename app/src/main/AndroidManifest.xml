@@ -18,7 +18,8 @@
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
-                android:value="" />
+                android:value=""
+                />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

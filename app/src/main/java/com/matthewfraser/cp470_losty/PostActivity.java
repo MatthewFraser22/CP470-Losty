@@ -31,7 +31,7 @@ public class PostActivity extends AppCompatActivity {
     protected static String TAG = "PostActivity";
     private final int REQUEST_CODE = 123;
 
-    //ActivityPostBinding binding;
+
 
     EditText itemNameEditText, brandNameEditText, colorEditText,
             descriptionEditText, otherEditText;
@@ -48,6 +48,7 @@ public class PostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Posting Page");
         setContentView(R.layout.activity_post);
 
         itemNameEditText = findViewById(R.id.lost_item_edit_text);

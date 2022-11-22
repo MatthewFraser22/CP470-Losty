@@ -10,4 +10,6 @@
     <color name="red">#8b0000</color>
     <color name="post_button_red">#C61B0F</color>
     <color name="post_background">#FFE6DDAD</color>
+    <color name="toolbar">#595857</color>
+
 </resources>
