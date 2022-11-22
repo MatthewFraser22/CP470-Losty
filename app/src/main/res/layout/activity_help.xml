@@ -22,25 +22,37 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="How to make a posting" />
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+
+                android:text="How to post a lost item" />
 
             <Button
+                android:id="@+id/feed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="How to view feed" />
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:text="How to view lost items near you" />
 
             <Button
+                android:id="@+id/sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="How to sign in" />
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:text="How to sign in/out" />
 
             <Button
+                android:id="@+id/author"
                 android:layout_width="wrap_content"
-
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
-                android:text="Authors, Version Number" />
+                android:text="About" />
         </LinearLayout>
 
     </FrameLayout>
