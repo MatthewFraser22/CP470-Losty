@@ -22,6 +22,8 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String EMAIL_COL = "email";
     private static final String USERNAME_COL = "username";
     private static final String PASSWORD_COL = "password";
+    private static final String ID = "ID";
+    public static AccountModel model;
 
 
     public DBHandler(Context context) {
@@ -75,10 +77,19 @@ public class DBHandler extends SQLiteOpenHelper {
 
         if (cursorAccounts.moveToFirst()) {
             do {
-                accountModalArrayList.add(new AccountModel(cursorAccounts.getString(1),
+                model = new AccountModel(cursorAccounts.getString(1),
                         cursorAccounts.getString(2),
                         cursorAccounts.getString(3),
-                        cursorAccounts.getString(4)));
+                        cursorAccounts.getString(4),
+                        cursorAccounts.getString(0));
+
+                model.setEmail(cursorAccounts.getString(2));
+                model.setName(cursorAccounts.getString(1));
+                model.setId(cursorAccounts.getString(0));
+                model.setPassword(cursorAccounts.getString(3));
+                model.setUsername(cursorAccounts.getString(4));
+                accountModalArrayList.add(model);
+
             } while (cursorAccounts.moveToNext());
         }
         cursorAccounts.close();

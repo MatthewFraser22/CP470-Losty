@@ -76,7 +76,8 @@ public class PostActivity extends AppCompatActivity {
                     String description = descriptionEditText.getText().toString();
                     String other = otherEditText.getText().toString();
 
-                    String id = String.valueOf(AccountModel.id);
+                    Log.i(TAG, "ID: "+DBHandler.model.getId());
+                    String id = DBHandler.model.getId();
 
                     Boolean insertData = postDatabase.addData(
                             lostItemPhotoString,
