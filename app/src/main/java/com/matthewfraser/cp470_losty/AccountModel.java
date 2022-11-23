@@ -6,7 +6,7 @@ public class AccountModel {
     private String email;
     private String username;
     private String password;
-    private int id;
+    private String id;
 
     public String getName() {
         return name;
@@ -40,18 +40,17 @@ public class AccountModel {
         this.password = Password;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(String id) { this.id = id; }
 
-    public AccountModel(String Name, String Email, String Username, String Password) {
+    public AccountModel(String Name, String Email, String Username, String Password, String id) {
         this.name = Name;
         this.email = Email;
         this.username = Username;
         this.password = Password;
+        this.id = id;
     }
 }
