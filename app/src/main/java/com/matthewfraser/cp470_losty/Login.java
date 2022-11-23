@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity {
                 for(int i = 0; i < accounts.size(); i++) {
                     if(accounts.get(i).getUsername().equals(username)) {
                         if(accounts.get(i).getPassword().equals(password)) {
-                            Intent intent = new Intent(Login.this, TestActivity.class);
+                            Intent intent = new Intent(Login.this, PostActivity.class);
                             startActivity(intent);
                         }
                     }

@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.accounts.Account;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -75,7 +76,19 @@ public class PostActivity extends AppCompatActivity {
                     String description = descriptionEditText.getText().toString();
                     String other = otherEditText.getText().toString();
 
-                    Boolean insertData = postDatabase.addData(lostItemPhotoString, name, brand, color, description, other);
+                    String id = String.valueOf(AccountModel.id);
+
+                    Boolean insertData = postDatabase.addData(
+                            lostItemPhotoString,
+                            name,
+                            brand,
+                            color,
+                            description,
+                            other,
+                            id
+                    );
+
+                    Log.i(TAG, "USER ID" + id);
 
                     progressBar = new ProgressDialog(v.getContext());
                     progressBar.setCancelable(true);
