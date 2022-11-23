@@ -1,12 +1,19 @@
 package com.matthewfraser.cp470_losty;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 
+import java.io.ByteArrayOutputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -22,10 +29,13 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String EMAIL_COL = "email";
     private static final String USERNAME_COL = "username";
     private static final String PASSWORD_COL = "password";
+    private static final String PROFILE_IMAGE_COL = "profile_image";
+    private Context currentContext;
 
 
     public DBHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        currentContext = context;
     }
 
     @Override
@@ -35,7 +45,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 + NAME_COL + " TEXT,"
                 + EMAIL_COL + " TEXT,"
                 + USERNAME_COL + " TEXT UNIQUE,"
-                + PASSWORD_COL + " TEXT)";
+                + PASSWORD_COL + " TEXT,"
+                + PROFILE_IMAGE_COL + " BLOB)";
 
         db.execSQL(query);
     }
@@ -83,6 +94,99 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         cursorAccounts.close();
         return accountModalArrayList;
+    }
+
+    public boolean checkIfEmailExists(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursorAccounts = db.rawQuery("SELECT " + EMAIL_COL + " FROM " + TABLE_NAME + " WHERE " + EMAIL_COL + "='" + email + "'", null);
+        cursorAccounts.moveToFirst();
+        try {
+            cursorAccounts.getString(0);
+        } catch (CursorIndexOutOfBoundsException e) {
+            // Email doesn't exist
+            return false;
+        }
+        return true;
+    }
+
+    // Returns true if successful, else false
+    public boolean updateEmail(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        SharedPreferences preferences = currentContext.getSharedPreferences("losty", Context.MODE_PRIVATE);
+        String oldEmail = preferences.getString("email", "");
+        ContentValues cv = new ContentValues();
+        cv.put(EMAIL_COL, email);
+
+        try {
+            db.update(TABLE_NAME, cv, "email = ?", new String[]{oldEmail});
+            preferences.edit().putString("email", email).commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean updateName(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        SharedPreferences preferences = currentContext.getSharedPreferences("losty", Context.MODE_PRIVATE);
+        int userId = preferences.getInt("userId", -1);
+        String email = preferences.getString("email", "");
+        ContentValues cv = new ContentValues();
+        cv.put(NAME_COL, name);
+
+        try {
+            db.update(TABLE_NAME, cv, "email = ?", new String[]{email});
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean updateProfileImage(String uri) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        SharedPreferences preferences = currentContext.getSharedPreferences("losty", Context.MODE_PRIVATE);
+        int userId = preferences.getInt("userId", -1);
+        String email = preferences.getString("email", "");
+
+        // Change URI to blob to save to db
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(currentContext.getContentResolver(), Uri.parse(uri));
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+            byte[] blob = stream.toByteArray();
+
+            ContentValues cv = new ContentValues();
+            cv.put(PROFILE_IMAGE_COL, blob);
+
+            db.update(TABLE_NAME, cv, EMAIL_COL + " = ?", new String[]{email});
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @SuppressLint("Range")
+    public byte[] getProfileImage() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        SharedPreferences preferences = currentContext.getSharedPreferences("losty", Context.MODE_PRIVATE);
+        int userId = preferences.getInt("userId", -1);
+        String email = preferences.getString("email", "");
+        byte[] profileImageBlob = null;
+        Cursor cursorAccounts = db.rawQuery("SELECT "+ PROFILE_IMAGE_COL + " FROM " + TABLE_NAME + " WHERE " + EMAIL_COL + "='" + email + "'", null);
+
+        try {
+            if(cursorAccounts.getCount() > 0) {
+                cursorAccounts.moveToFirst();
+                profileImageBlob = cursorAccounts.getBlob(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return profileImageBlob;
     }
 
     @Override

@@ -7,102 +7,124 @@
     tools:context=".ProfileActivity">
 
     <ImageView
-        android:id="@+id/profilePictureimageView"
+        android:id="@+id/profilePictureImageView"
         android:layout_width="123dp"
         android:layout_height="127dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/profilePictureTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_upload"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="108dp" />
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/profilePictureTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="13dp"
         android:text="Profile Picture"
-        android:textSize="20"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="248dp" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePictureImageView" />
 
     <TextView
         android:id="@+id/updateEmailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="295dp"
         android:text="Update Email"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="295dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
         android:ems="10"
+        android:hint="@string/account_email"
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="314dp" />
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateEmailTextView" />
 
     <TextView
         android:id="@+id/phoneNumberTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="9dp"
         android:text="Phone Number"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="371dp" />
-        android:background="@drawable/edit_text_design"
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--
-<!--        android:ems="15"-->
-<!--        android:hint="@string/name_field"-->
-<!--    android:layout_marginLeft="10dp"&ndash;&gt;-->
-    <!--        android:layout_marginRight="10dp"-->
-    <!--        android:layout_marginTop="20dp"-->
-
-
-
-
-
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
     <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
         android:ems="10"
+        android:hint="@android:string/emptyPhoneNumber"
         android:inputType="phone"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="390dp" />
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberTextView" />
 
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="7dp"
         android:text="Name"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="446dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="465dp" />
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/postNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="37dp"
         android:text="Post 1"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="550dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <TextView
         android:id="@+id/editTextTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="36dp"
         android:text="edit"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="549dp" />
+        app:layout_constraintStart_toEndOf="@+id/postNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="465dp"
+        android:text="Save"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
