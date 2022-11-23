@@ -20,6 +20,7 @@ public class AccountCreation extends AppCompatActivity {
     private EditText editUsername;
     private EditText editPassword;
     private boolean uniqueUsername;
+    private int ctr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,8 @@ public class AccountCreation extends AppCompatActivity {
         editPassword = (EditText)findViewById(R.id.enterAccountPassword);
         createAccount = (Button)findViewById(R.id.accountCreationButton);
         DBHandler dbHandler = new DBHandler(AccountCreation.this);
+        ctr = dbHandler.readAccounts().size() + 1;
+
 
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +53,7 @@ public class AccountCreation extends AppCompatActivity {
                     if(email.contains("@") && email.contains(".")) {
                         if(password.length() >= 8) {
                             if(password.matches(".*\\d.*")) {
-                                uniqueUsername = dbHandler.addNewAccount(name, email, username, password);
+                                uniqueUsername = dbHandler.addNewAccount(ctr, name, email, username, password);
                                 if (uniqueUsername) {
                                     Toast.makeText(AccountCreation.this, "Account has been created", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(AccountCreation.this, Login.class);

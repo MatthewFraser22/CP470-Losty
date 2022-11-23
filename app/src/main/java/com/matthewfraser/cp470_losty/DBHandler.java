@@ -53,12 +53,13 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    public boolean addNewAccount(String name, String email, String username, String password) {
+    public boolean addNewAccount(int id, String name, String email, String username, String password) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
+        values.put(ID_COL, id);
         values.put(NAME_COL, name);
         values.put(EMAIL_COL, email);
         values.put(USERNAME_COL, username);
@@ -66,7 +67,6 @@ public class DBHandler extends SQLiteOpenHelper {
 
         try {
             db.insertOrThrow(TABLE_NAME, null, values);
-            System.out.println("dfhakfkajhgfdlajgas;'gjas;lgjm;agjlm;lg");
         } catch (Throwable ex) {
             System.out.println(ex);
             db.close();

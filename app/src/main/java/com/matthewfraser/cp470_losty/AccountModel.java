@@ -46,7 +46,8 @@ public class AccountModel {
 
     public void setId(String id) { this.id = id; }
 
-    public AccountModel(String Name, String Email, String Username, String Password, String id) {
+    public AccountModel(int Id, String Name, String Email, String Username, String Password) {
+        this.id = Id;
         this.name = Name;
         this.email = Email;
         this.username = Username;
