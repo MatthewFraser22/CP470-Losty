@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="5dp"
+    tools:context=".SignInOutFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        android:fontFamily="Arial"
+        android:textStyle="bold"
+        android:text="To sign out, top on the profile option at the bottom of the screen. At the bottom of the profile page you will see an option to sign out. Once signed out, you will be prompted to sign in." />
+
+</FrameLayout>

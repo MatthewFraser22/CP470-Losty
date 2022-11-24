@@ -1,5 +1,6 @@
 package com.matthewfraser.cp470_losty;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,11 +24,15 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
 
 public class PostActivity extends AppCompatActivity {
     protected static String TAG = "PostActivity";
     private final int REQUEST_CODE = 123;
+
+
 
     EditText itemNameEditText, brandNameEditText, colorEditText,
             descriptionEditText, otherEditText;
@@ -42,6 +49,7 @@ public class PostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Posting Page");
         setContentView(R.layout.activity_post);
 
         itemNameEditText = findViewById(R.id.lost_item_edit_text);
@@ -152,6 +160,57 @@ public class PostActivity extends AppCompatActivity {
                 }
             }
         });
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(1);
+        menuItem.setChecked(true);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_one:
+
+                        break;
+                    case R.id.action_two:
+
+                        //startActivity(goPost);
+                        break;
+                    case R.id.action_three:
+
+                        break;
+                    case R.id.action_four:
+                        Intent help = new Intent(PostActivity.this, HelpActivity.class);
+                        startActivity(help);
+                        break;
+                }
+
+                return false;
+            }
+        });
+
+//        binding = ActivityPostBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
+//        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+//            switch (item.getItemId()) {
+//                case R.id.action_one:
+////
+//
+//                    break;
+//                case R.id.action_two:
+//
+//                    break;
+//                case R.id.action_three:
+//
+//                    break;
+//                case R.id.action_four:
+//                    Intent help = new Intent(PostActivity.this, HelpActivity.class);
+//                    startActivity(help);
+//
+//                    break;
+//            }
+//            return true;
+//        });
     }
 
     private Boolean isPostValid() {
