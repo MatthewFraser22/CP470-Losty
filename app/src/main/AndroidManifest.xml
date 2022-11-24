@@ -28,6 +28,9 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".PostActivity"
             android:exported="false">
             <meta-data

@@ -2,7 +2,9 @@ package com.matthewfraser.cp470_losty;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +43,14 @@ public class Login extends AppCompatActivity {
                 for(int i = 0; i < accounts.size(); i++) {
                     if(accounts.get(i).getUsername().equals(username)) {
                         if(accounts.get(i).getPassword().equals(password)) {
-                            Intent intent = new Intent(Login.this, PostActivity.class);
+                            // Set session var to include user ID upon login
+                            SharedPreferences preferences = getSharedPreferences("losty", Context.MODE_PRIVATE);
+                            preferences.edit().putString("userId", accounts.get(i).getId()).commit();
+                            preferences.edit().putString("email", accounts.get(i).getEmail()).commit();
+                            preferences.edit().putString("name", accounts.get(i).getName()).commit();
+                            preferences.edit().putString("username", accounts.get(i).getUsername()).commit();
+
+                            Intent intent = new Intent(Login.this, ProfileActivity.class);
                             startActivity(intent);
                         }
                     }
