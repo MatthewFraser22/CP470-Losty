@@ -119,7 +119,7 @@ public class PostActivity extends AppCompatActivity {
                                 progressBar.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                     @Override
                                     public void onDismiss(DialogInterface dialog) {
-                                        finish();
+                                        Intent intent = new Intent(getApplicationContext(), Feed.class);
                                         String toastText = "";
 
                                         if (insertData == true) {
@@ -129,6 +129,7 @@ public class PostActivity extends AppCompatActivity {
                                         }
 
                                         Toast.makeText(PostActivity.this, toastText, Toast.LENGTH_SHORT).show();
+                                        startActivity(intent);
                                     }
                                 });
                             }
