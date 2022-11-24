@@ -45,10 +45,11 @@ public class Login extends AppCompatActivity {
                         if(accounts.get(i).getPassword().equals(password)) {
                             // Set session var to include user ID upon login
                             SharedPreferences preferences = getSharedPreferences("losty", Context.MODE_PRIVATE);
-                            preferences.edit().putInt("userId", accounts.get(i).getId()).commit();
+                            preferences.edit().putString("userId", accounts.get(i).getId()).commit();
                             preferences.edit().putString("email", accounts.get(i).getEmail()).commit();
                             preferences.edit().putString("name", accounts.get(i).getName()).commit();
                             preferences.edit().putString("username", accounts.get(i).getUsername()).commit();
+
                             Intent intent = new Intent(Login.this, ProfileActivity.class);
                             startActivity(intent);
                         }

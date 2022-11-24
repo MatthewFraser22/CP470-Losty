@@ -143,7 +143,6 @@ public class DBHandler extends SQLiteOpenHelper {
     public boolean updateName(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         SharedPreferences preferences = currentContext.getSharedPreferences("losty", Context.MODE_PRIVATE);
-        int userId = preferences.getInt("userId", -1);
         String email = preferences.getString("email", "");
         ContentValues cv = new ContentValues();
         cv.put(NAME_COL, name);
@@ -161,7 +160,6 @@ public class DBHandler extends SQLiteOpenHelper {
     public boolean updateProfileImage(String uri) {
         SQLiteDatabase db = this.getWritableDatabase();
         SharedPreferences preferences = currentContext.getSharedPreferences("losty", Context.MODE_PRIVATE);
-        int userId = preferences.getInt("userId", -1);
         String email = preferences.getString("email", "");
 
         // Change URI to blob to save to db
@@ -186,7 +184,6 @@ public class DBHandler extends SQLiteOpenHelper {
     public byte[] getProfileImage() {
         SQLiteDatabase db = this.getReadableDatabase();
         SharedPreferences preferences = currentContext.getSharedPreferences("losty", Context.MODE_PRIVATE);
-        int userId = preferences.getInt("userId", -1);
         String email = preferences.getString("email", "");
         byte[] profileImageBlob = null;
         Cursor cursorAccounts = db.rawQuery("SELECT "+ PROFILE_IMAGE_COL + " FROM " + TABLE_NAME + " WHERE " + EMAIL_COL + "='" + email + "'", null);

@@ -1,6 +1,7 @@
 package com.matthewfraser.cp470_losty;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText nameText;
     private ImageView profilePictureImageView;
     public static final int PICK_IMAGE = 1;
+    private RecyclerView postRecyclerView;
 
 
     @Override
@@ -40,6 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
         phoneNumberText = (EditText)findViewById(R.id.editTextPhone);
         nameText = (EditText)findViewById(R.id.editTextTextPersonName);
         profilePictureImageView = (ImageView)findViewById(R.id.profilePictureImageView);
+        postRecyclerView = (RecyclerView)findViewById(R.id.postRecyclerView);
         DBHandler dbHandler = new DBHandler(ProfileActivity.this);
         PostDatabaseHelper postDbHandler= new PostDatabaseHelper(ProfileActivity.this);
 
@@ -126,6 +129,9 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        // Populate user's posts
+        Cursor postsCursor = postDbHandler.showData();
 
 
     }

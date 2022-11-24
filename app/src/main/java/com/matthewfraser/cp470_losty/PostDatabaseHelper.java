@@ -67,4 +67,11 @@ public class PostDatabaseHelper extends SQLiteOpenHelper {
         return data;
 
     }
+
+    public Cursor showUserPostData(String email) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor data = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE email='" + email + "'", null);
+
+        return data;
+    }
 }
