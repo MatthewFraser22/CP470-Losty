@@ -27,7 +27,6 @@ public class Login extends AppCompatActivity {
         createAccount = (Button)findViewById(R.id.accountCreationButton);
         login = (Button)findViewById(R.id.loginButton);
 
-
         DBHandler db = new DBHandler(Login.this);
 
         ArrayList<AccountModel> accounts = db.readAccounts();
@@ -35,7 +34,6 @@ public class Login extends AppCompatActivity {
         for(int i = 0; i < accounts.size(); i++) {
             System.out.println(accounts.get(i).getUsername());
         }
-
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
