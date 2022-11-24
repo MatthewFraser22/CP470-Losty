@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">CP470-Losty</string>
+    <string name="account_creation_title">Account Creation</string>
+    <string name="account_name">Name</string>
+    <string name="account_email">Email</string>
+    <string name="account_username">Username</string>
+    <string name="account_password">Password</string>
+    <string name="account_create_button">Create Account</string>
+    <string name="login_title">Login</string>
+    <string name="login_button">Login</string>
+
     <string name="lost_post_title">Lost an item ? Post it here.</string>
     <string name="item_name">item name</string>
     <string name="item_brand">item brand</string>

@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.accounts.Account;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -83,7 +84,20 @@ public class PostActivity extends AppCompatActivity {
                     String description = descriptionEditText.getText().toString();
                     String other = otherEditText.getText().toString();
 
-                    Boolean insertData = postDatabase.addData(lostItemPhotoString, name, brand, color, description, other);
+                    Log.i(TAG, "ID: "+DBHandler.model.getId());
+                    String id = DBHandler.model.getId();
+
+                    Boolean insertData = postDatabase.addData(
+                            lostItemPhotoString,
+                            name,
+                            brand,
+                            color,
+                            description,
+                            other,
+                            id
+                    );
+
+                    Log.i(TAG, "USER ID" + id);
 
                     progressBar = new ProgressDialog(v.getContext());
                     progressBar.setCancelable(true);
@@ -127,7 +141,7 @@ public class PostActivity extends AppCompatActivity {
                                 progressBar.setOnDismissListener(new DialogInterface.OnDismissListener() {
                                     @Override
                                     public void onDismiss(DialogInterface dialog) {
-                                        finish();
+                                        Intent intent = new Intent(getApplicationContext(), Feed.class);
                                         String toastText = "";
 
                                         if (insertData == true) {
@@ -137,6 +151,7 @@ public class PostActivity extends AppCompatActivity {
                                         }
 
                                         Toast.makeText(PostActivity.this, toastText, Toast.LENGTH_SHORT).show();
+                                        startActivity(intent);
                                     }
                                 });
                             }
