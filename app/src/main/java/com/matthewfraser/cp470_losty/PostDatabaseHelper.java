@@ -18,6 +18,7 @@ public class PostDatabaseHelper extends SQLiteOpenHelper {
     public static final String COL5 = "COLOR";
     public static final String COL6 = "DESCRIPTION";
     public static final String COL7 = "OTHER";
+    public static final String COL8 = "USERID";
 
     public PostDatabaseHelper(Context cxt) {
         super(cxt, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,7 +27,7 @@ public class PostDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "PICTURE TEXT, ITEM TEXT, BRAND TEXT, COLOR TEXT, DESCRIPTION TEXT, OTHER TEXT)";
+                + "PICTURE TEXT, ITEM TEXT, BRAND TEXT, COLOR TEXT, DESCRIPTION TEXT, OTHER TEXT, USERID TEXT)";
 
         db.execSQL(createTable);
 
@@ -38,7 +39,7 @@ public class PostDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String picture, String item, String brand, String color, String description, String other) {
+    public boolean addData(String picture, String item, String brand, String color, String description, String other, String userID) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -48,6 +49,7 @@ public class PostDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL5, color);
         contentValues.put(COL6, description);
         contentValues.put(COL7, other);
+        contentValues.put(COL8, userID);
 
         long result = database.insert(TABLE_NAME, null, contentValues);
 
@@ -64,5 +66,12 @@ public class PostDatabaseHelper extends SQLiteOpenHelper {
 
         return data;
 
+    }
+
+    public Cursor showUserPostData(String email) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor data = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE email='" + email + "'", null);
+
+        return data;
     }
 }
