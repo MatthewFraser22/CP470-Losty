@@ -88,17 +88,19 @@ public class DBHandler extends SQLiteOpenHelper {
 
         if (cursorAccounts.moveToFirst()) {
             do {
-                model = new AccountModel(cursorAccounts.getString(1),
+                model = new AccountModel(
+                        cursorAccounts.getString(0),
+                        cursorAccounts.getString(1),
                         cursorAccounts.getString(2),
                         cursorAccounts.getString(3),
-                        cursorAccounts.getString(4),
-                        cursorAccounts.getString(0));
+                        cursorAccounts.getString(4));
 
-                model.setEmail(cursorAccounts.getString(2));
-                model.setName(cursorAccounts.getString(1));
                 model.setId(cursorAccounts.getString(0));
-                model.setPassword(cursorAccounts.getString(3));
-                model.setUsername(cursorAccounts.getString(4));
+                model.setName(cursorAccounts.getString(1));
+                model.setEmail(cursorAccounts.getString(2));
+                model.setUsername(cursorAccounts.getString(3));
+                model.setPassword(cursorAccounts.getString(4));
+
                 accountModalArrayList.add(model);
 
             } while (cursorAccounts.moveToNext());
