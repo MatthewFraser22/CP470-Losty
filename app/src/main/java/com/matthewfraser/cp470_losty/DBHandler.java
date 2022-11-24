@@ -137,6 +137,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         try {
             db.update(TABLE_NAME, cv, "email = ?", new String[]{email});
+            preferences.edit().putString("name", name).commit();
         } catch (Exception e) {
             e.printStackTrace();
             return false;

@@ -2,7 +2,9 @@ package com.matthewfraser.cp470_losty;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -38,8 +41,15 @@ public class ProfileActivity extends AppCompatActivity {
         nameText = (EditText)findViewById(R.id.editTextTextPersonName);
         profilePictureImageView = (ImageView)findViewById(R.id.profilePictureImageView);
         DBHandler dbHandler = new DBHandler(ProfileActivity.this);
+        PostDatabaseHelper postDbHandler= new PostDatabaseHelper(ProfileActivity.this);
 
+
+        // Populate profile picture and edit text fields with data
         byte[] profilePictureBlob = dbHandler.getProfileImage();
+        SharedPreferences preferences = getSharedPreferences("losty", Context.MODE_PRIVATE);
+        String email = preferences.getString("email", "");
+        String name = preferences.getString("name", "");
+        String phoneNumber = preferences.getString("phoneNumber", "");
 
         if (profilePictureBlob != null) {
             try {
@@ -50,10 +60,11 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
         }
+        emailText.setText(email, TextView.BufferType.EDITABLE);
+        nameText.setText(name, TextView.BufferType.EDITABLE);
+        phoneNumberText.setText(phoneNumber, TextView.BufferType.EDITABLE);
 
-
-
-
+        // Set on click listeners
         profilePictureImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +77,6 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
-
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,10 +86,10 @@ public class ProfileActivity extends AppCompatActivity {
                 boolean error = false;
                 String successToastStr = "";
 
-
-
-                // Validate and save value of email if not empty
-                if (!emailStr.isEmpty()) {
+                // Validate and save value of email if not empty and if it is different from current email
+                SharedPreferences preferences = getSharedPreferences("losty", Context.MODE_PRIVATE);
+                String email = preferences.getString("email", "");
+                if (!emailStr.isEmpty() && !emailStr.equals(email)) {
                     if(emailStr.contains("@") && emailStr.contains(".")) {
                         // Check if email exists already
                         if (dbHandler.checkIfEmailExists(emailStr) == false) {
