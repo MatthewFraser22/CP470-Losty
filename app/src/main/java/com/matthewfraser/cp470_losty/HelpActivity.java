@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,9 +16,12 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -73,18 +77,7 @@ public class HelpActivity extends AppCompatActivity {
         author.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(HelpActivity.this);
-                builder.setTitle("Version 1.0, by Matthew Fraser, Mitchell Newson, Alex Do, Owen Read");
-                builder.setCancelable(false);
-                builder.setPositiveButton("Back", (DialogInterface.OnClickListener) (dialog, which) -> {
-                    dialog.cancel();
-                });
-
-
-
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-
+                showCustomDialog();
             }
         });
 
@@ -137,6 +130,30 @@ public class HelpActivity extends AppCompatActivity {
 //        });
 
 
+    }
+
+    void showCustomDialog() {
+        final Dialog dialog = new Dialog(HelpActivity.this);
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.custom_dialogue);
+        Button exit = dialog.findViewById(R.id.exit);
+
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.cancel();
+            }
+        });
+//        Window window = dialog.getWindow();
+//        WindowManager.LayoutParams layoutParams = window.getAttributes();
+//        layoutParams.gravity = Gravity.;
+//        window.setAttributes(layoutParams);
+
+        dialog.show();
     }
 
     private void replaceFragment(Fragment fragment) {
