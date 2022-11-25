@@ -1,9 +1,11 @@
 package com.matthewfraser.cp470_losty;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -12,6 +14,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +33,7 @@ public class Feed extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Home Feed");
         setContentView(R.layout.activity_feed);
 
         db = new PostDatabaseHelper(Feed.this);
@@ -39,6 +46,38 @@ public class Feed extends AppCompatActivity {
         adapter = new ItemAdapter(itemList);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_one:
+
+                        break;
+                    case R.id.action_two:
+                        Intent post = new Intent(Feed.this, PostActivity.class);
+                        startActivity(post);
+                        break;
+                    case R.id.action_three:
+                        Intent profile = new Intent(Feed.this, ProfileActivity.class);
+                        startActivity(profile);
+
+                        break;
+                    case R.id.action_four:
+                        Intent help = new Intent(Feed.this, HelpActivity.class);
+                        startActivity(help);
+
+                        break;
+                }
+
+                return false;
+            }
+        });
 
     }
 

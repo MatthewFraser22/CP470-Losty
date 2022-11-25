@@ -83,7 +83,7 @@ public class HelpActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(0);
+        MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -91,6 +91,8 @@ public class HelpActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_one:
+                        Intent home = new Intent(HelpActivity.this, Feed.class);
+                        startActivity(home);
 
                         break;
                     case R.id.action_two:
@@ -98,6 +100,8 @@ public class HelpActivity extends AppCompatActivity {
                         startActivity(post);
                         break;
                     case R.id.action_three:
+                        Intent profile = new Intent(HelpActivity.this, ProfileActivity.class);
+                        startActivity(profile);
 
                         break;
                     case R.id.action_four:

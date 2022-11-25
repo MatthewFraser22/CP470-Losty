@@ -170,13 +170,17 @@ public class PostActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_one:
+                        Intent home = new Intent(PostActivity.this, Feed.class);
+                        startActivity(home);
 
                         break;
                     case R.id.action_two:
 
-                        //startActivity(goPost);
+
                         break;
                     case R.id.action_three:
+                        Intent profile = new Intent(PostActivity.this, ProfileActivity.class);
+                        startActivity(profile);
 
                         break;
                     case R.id.action_four:

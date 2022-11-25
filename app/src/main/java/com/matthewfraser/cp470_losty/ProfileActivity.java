@@ -1,5 +1,6 @@
 package com.matthewfraser.cp470_losty;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,12 +15,16 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -35,6 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Profile Page");
         setContentView(R.layout.activity_profile);
 
         saveButton = (Button)findViewById(R.id.saveButton);
@@ -79,6 +85,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
             }
+
         });
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,10 +135,45 @@ public class ProfileActivity extends AppCompatActivity {
                 }
 
             }
+
+
         });
 
         // Populate user's posts
         Cursor postsCursor = postDbHandler.showData();
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(2);
+        menuItem.setChecked(true);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_one:
+                        Intent home = new Intent(ProfileActivity.this, Feed.class);
+                        startActivity(home);
+
+                        break;
+                    case R.id.action_two:
+                        Intent post = new Intent(ProfileActivity.this, PostActivity.class);
+                        startActivity(post);
+
+
+                        break;
+                    case R.id.action_three:
+
+
+                        break;
+                    case R.id.action_four:
+                        Intent help = new Intent(ProfileActivity.this, HelpActivity.class);
+                        startActivity(help);
+                        break;
+                }
+
+                return false;
+            }
+        });
 
 
     }

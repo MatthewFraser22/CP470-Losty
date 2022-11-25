@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
                             preferences.edit().putString("name", accounts.get(i).getName()).commit();
                             preferences.edit().putString("username", accounts.get(i).getUsername()).commit();
 
-                            Intent intent = new Intent(Login.this, ProfileActivity.class);
+                            Intent intent = new Intent(Login.this, Feed.class);
                             startActivity(intent);
                         }
                     }
