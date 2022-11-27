@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CP470-Losty</string>
+    <string name="account_creation_title">Création de compte</string>
+    <string name="account_name">Nom</string>
+    <string name="account_email">Email</string>
+    <string name="account_username">Nom d\'utilisateur</string>
+    <string name="account_password">Mot de passe</string>
+    <string name="account_create_button">Créer un compte</string>
+    <string name="login_title">connexion</string>
+    <string name="login_button">connexion</string>
+
+    <string name="lost_post_title">Vous avez perdu un objet ? Postez-le ici.</string>
+    <string name="item_name">nom de l\'article</string>
+    <string name="item_brand">marque de l\'article</string>
+    <string name="item_color">Couleur</string>
+    <string name="item_description">la description</string>
+    <string name="item_other">autre</string>
+    <string name="item_image">Sélectionnez une photo de votre objet perdu</string>
+    <string name="post_button">Publier un objet perdu</string>
+    <string name="select_picture">Sélectionnez l\'image</string>
+    <string name="posting">Affectation...</string>
+    <string name="successfully_posted">Message téléchargé avec succès</string>
+    <string name="error_posting">Erreur : insertion de données - données non enregistrées</string>
+    <string name="error_form_not_valid">Veuillez remplir toutes les entrées</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Bonjour fragment vierge</string>
+
+</resources>

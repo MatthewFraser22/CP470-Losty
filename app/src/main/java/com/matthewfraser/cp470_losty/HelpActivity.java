@@ -42,22 +42,17 @@ public class HelpActivity extends AppCompatActivity {
         setTitle("Help Page");
         setContentView(R.layout.activity_help);
 
-
-
         post = findViewById(R.id.post);
         feed = findViewById(R.id.feed);
         sign = findViewById(R.id.sign);
         author = findViewById(R.id.author);
 
-//
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new HowToPostFragment());
             }
         });
-
-
 
         feed.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -32,8 +32,6 @@ public class PostActivity extends AppCompatActivity {
     protected static String TAG = "PostActivity";
     private final int REQUEST_CODE = 123;
 
-
-
     EditText itemNameEditText, brandNameEditText, colorEditText,
             descriptionEditText, otherEditText;
     ImageButton imageButton;
