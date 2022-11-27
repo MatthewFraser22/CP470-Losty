@@ -47,7 +47,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME_COL + " TEXT,"
                 + EMAIL_COL + " TEXT,"
-                + PHONE_COL + "TEXT,"
+                + PHONE_COL + " TEXT,"
                 + USERNAME_COL + " TEXT UNIQUE,"
                 + PASSWORD_COL + " TEXT,"
                 + PROFILE_IMAGE_COL + " BLOB)";
