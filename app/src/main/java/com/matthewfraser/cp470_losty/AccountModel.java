@@ -7,6 +7,7 @@ public class AccountModel {
     private String username;
     private String password;
     private String id;
+    private String phone;
 
     public String getName() {
         return name;
@@ -40,16 +41,24 @@ public class AccountModel {
         this.password = Password;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String Phone) {
+        this.phone = Phone;
+    }
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) { this.id = id; }
 
-    public AccountModel(int Id, String Name, String Email, String Username, String Password) {
-        this.id = Id;
+    public AccountModel(String Name, String Email, String Phone, String Username, String Password, String id) {
         this.name = Name;
         this.email = Email;
+        this.phone = Phone;
         this.username = Username;
         this.password = Password;
         this.id = id;

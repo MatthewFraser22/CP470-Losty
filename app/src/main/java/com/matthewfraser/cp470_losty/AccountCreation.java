@@ -17,6 +17,7 @@ public class AccountCreation extends AppCompatActivity {
     private Button createAccount;
     private EditText editName;
     private EditText editEmail;
+    private EditText editPhone;
     private EditText editUsername;
     private EditText editPassword;
     private boolean uniqueUsername;
@@ -28,6 +29,7 @@ public class AccountCreation extends AppCompatActivity {
         setContentView(R.layout.activity_account_creation);
         editName = (EditText)findViewById(R.id.enterAccountName);
         editEmail = (EditText)findViewById(R.id.enterAccountEmail);
+        editPhone = (EditText)findViewById(R.id.enterAccountPhoneNumber);
         editUsername = (EditText)findViewById(R.id.enterAccountUsername);
         editPassword = (EditText)findViewById(R.id.enterAccountPassword);
         createAccount = (Button)findViewById(R.id.accountCreationButton);
@@ -40,6 +42,7 @@ public class AccountCreation extends AppCompatActivity {
             public void onClick(View view) {
                 String name = editName.getText().toString();
                 String email = editEmail.getText().toString();
+                String phone = editEmail.getText().toString();
                 String username = editUsername.getText().toString();
                 String password = editPassword.getText().toString();
 
@@ -53,7 +56,7 @@ public class AccountCreation extends AppCompatActivity {
                     if(email.contains("@") && email.contains(".")) {
                         if(password.length() >= 8) {
                             if(password.matches(".*\\d.*")) {
-                                uniqueUsername = dbHandler.addNewAccount(ctr, name, email, username, password);
+                                uniqueUsername = dbHandler.addNewAccount(name, email, phone, username, password);
                                 if (uniqueUsername) {
                                     Toast.makeText(AccountCreation.this, "Account has been created", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(AccountCreation.this, Login.class);
