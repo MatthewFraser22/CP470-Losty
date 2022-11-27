@@ -24,4 +24,7 @@
     <string name="error_form_not_valid">Please fill out all entries</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="post_select_user_static">Poster Details</string>
+    <string name="name">Name: </string>
+    <string name="email">Email: </string>
 </resources>

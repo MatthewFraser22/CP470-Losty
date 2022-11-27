@@ -9,13 +9,17 @@ public class ItemModel {
     private String brand;
     private String color;
     private String desc;
+    private String userID;
+    private String postID;
 
-    public ItemModel(Bitmap image, String name, String brand, String color, String desc) {
+    public ItemModel(Bitmap image, String name, String brand, String color, String desc, String userID, String postID) {
         this.image = image;
         this.name = name;
         this.brand = brand;
         this.color = color;
         this.desc = desc;
+        this.userID = userID;
+        this.postID = postID;
     }
 
     public Bitmap getImage() {
@@ -33,4 +37,6 @@ public class ItemModel {
     public String getDesc() {
         return desc;
     }
+    public String getUserID() { return userID; }
+    public String getPostID() { return postID; }
 }

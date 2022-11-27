@@ -16,6 +16,7 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -29,6 +30,7 @@ public class Feed extends AppCompatActivity {
     List<ItemModel> itemList;
     ItemAdapter adapter;
     PostDatabaseHelper db;
+    ItemAdapter.ClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,16 @@ public class Feed extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new ItemAdapter(itemList);
+        listener = new ItemAdapter.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(getApplicationContext(), ItemProfile.class);
+                intent.putExtra("UserID", itemList.get(position).getUserID());
+                intent.putExtra("PostID", itemList.get(position).getPostID());
+                startActivity(intent);
+            }
+        };
+        adapter = new ItemAdapter(itemList, listener);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
@@ -105,7 +116,9 @@ public class Feed extends AppCompatActivity {
                         cursor.getString(2),
                         cursor.getString(3),
                         cursor.getString(4),
-                        cursor.getString(5)));
+                        cursor.getString(5),
+                        cursor.getString(7),
+                        cursor.getString(0)));
             } while (cursor.moveToNext());
         }
 

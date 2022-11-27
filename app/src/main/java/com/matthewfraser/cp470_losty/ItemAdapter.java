@@ -15,8 +15,12 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     private List<ItemModel> itemList;
+    private ClickListener listener;
 
-    public ItemAdapter (List<ItemModel> itemList) {this.itemList = itemList;}
+    public ItemAdapter (List<ItemModel> itemList, ClickListener listener) {
+        this.itemList = itemList;
+        this.listener = listener;
+    }
 
     @NonNull
     @Override
@@ -40,7 +44,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         return itemList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private ImageView imageView;
         private TextView nameView;
@@ -55,6 +59,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             brandView = itemView.findViewById(R.id.ItemBrand);
             colorView = itemView.findViewById(R.id.ItemColor);
             descView = itemView.findViewById(R.id.ItemDescription);
+            itemView.setOnClickListener(this);
         }
 
         public void setData(Bitmap image, String name, String brand, String color, String desc) {
@@ -72,5 +77,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             colorView.setText(color);
             descView.setText(desc);
         }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view, getAdapterPosition());
+        }
+    }
+
+    public interface ClickListener {
+        void onClick(View view, int position);
     }
 }
