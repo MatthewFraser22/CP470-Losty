@@ -38,12 +38,14 @@ public class ItemProfile extends AppCompatActivity {
        userName = findViewById(R.id.UserProfileName);
        userEmail = findViewById(R.id.UserProfileEmail);
 
-        Bundle extras = getIntent().getExtras();
+       Bundle extras = getIntent().getExtras();
 
-        postDB = new PostDatabaseHelper(ItemProfile.this);
-        userDB = new DBHandler(ItemProfile.this);
+       postDB = new PostDatabaseHelper(ItemProfile.this);
+       userDB = new DBHandler(ItemProfile.this);
 
-        GetData(extras.getString("UserID"), extras.getString("PostID"));
+       GetData(extras.getString("UserID"), extras.getString("PostID"));
+       getSupportActionBar().setTitle(getString(R.string.item_profile_title));
+       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void GetData(String userID, String postID) {
