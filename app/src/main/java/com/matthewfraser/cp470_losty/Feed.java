@@ -16,6 +16,8 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -29,6 +31,7 @@ public class Feed extends AppCompatActivity {
     List<ItemModel> itemList;
     ItemAdapter adapter;
     PostDatabaseHelper db;
+    Button post;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +48,21 @@ public class Feed extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new ItemAdapter(itemList);
         recyclerView.setAdapter(adapter);
+        post = findViewById(R.id.createAPost);
         adapter.notifyDataSetChanged();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
+
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent postIntent = new Intent(getApplicationContext(), PostActivity.class);
+                startActivity(postIntent);
+            }
+        });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -21,8 +21,19 @@
             android:layout_height="match_parent"
             tools:context=".Feed">
 
+            <Button
+                android:id="@+id/createAPost"
+                android:layout_marginLeft="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/toolbar"
+                android:text="+"
+                android:textStyle="bold"></Button>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/FeedRecycler"
+                android:layout_below="@id/createAPost"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
