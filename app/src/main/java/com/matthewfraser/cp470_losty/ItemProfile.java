@@ -2,12 +2,15 @@ package com.matthewfraser.cp470_losty;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +28,8 @@ public class ItemProfile extends AppCompatActivity {
     TextView userName;
     TextView userEmail;
 
+    Button phoneButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,7 @@ public class ItemProfile extends AppCompatActivity {
        postImage = findViewById(R.id.ItemProfileImage);
        userName = findViewById(R.id.UserProfileName);
        userEmail = findViewById(R.id.UserProfileEmail);
+       phoneButton = findViewById(R.id.PhoneButton);
 
        Bundle extras = getIntent().getExtras();
 
@@ -46,6 +52,15 @@ public class ItemProfile extends AppCompatActivity {
        GetData(extras.getString("UserID"), extras.getString("PostID"));
        getSupportActionBar().setTitle(getString(R.string.item_profile_title));
        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+       phoneButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent intent = new Intent(Intent.ACTION_DIAL);
+               intent.setData(Uri.parse("tel:" + phoneButton.getText().toString()));
+               startActivity(intent);
+           }
+       });
     }
 
     private void GetData(String userID, String postID) {
@@ -56,6 +71,7 @@ public class ItemProfile extends AppCompatActivity {
             do {
                 userName.setText(getString(R.string.name) + " " + userCursor.getString(3));
                 userEmail.setText(getString(R.string.email) + " " + userCursor.getString(2));
+                // SET BUTTON TO PHONE NUMBER BUTTTON HERE!!!
             } while (userCursor.moveToNext());
         }
         userCursor.close();

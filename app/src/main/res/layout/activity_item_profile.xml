@@ -51,6 +51,13 @@
         android:layout_height="wrap_content"
         android:text="Default"
         android:textSize="30sp"/>
+    <Button
+        android:id="@+id/PhoneButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:text="123456789"/>
     <ImageView
         android:id="@+id/ItemProfileImage"
         android:layout_width="match_parent"
