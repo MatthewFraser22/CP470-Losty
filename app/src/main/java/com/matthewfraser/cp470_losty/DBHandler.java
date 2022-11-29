@@ -61,7 +61,6 @@ public class DBHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
-        values.put(ID_COL, id);
         values.put(NAME_COL, name);
         values.put(EMAIL_COL, email);
         values.put(PHONE_COL, phone);
