@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,7 @@ import java.util.List;
 public class ProfileActivity extends AppCompatActivity {
 
     private Button saveButton;
+    private Button signOutButton;
     private EditText emailText;
     private EditText phoneNumberText;
     private EditText nameText;
@@ -59,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
         postRecyclerView = (RecyclerView)findViewById(R.id.postRecyclerView);
         DBHandler dbHandler = new DBHandler(ProfileActivity.this);
         postDbHandler= new PostDatabaseHelper(ProfileActivity.this);
+        signOutButton = findViewById(R.id.signoutButton);
 
         // Populate profile picture and edit text fields with data
         byte[] profilePictureBlob = dbHandler.getProfileImage();
@@ -95,6 +98,15 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
         });
+
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signoutIntent = new Intent(getApplicationContext(), Login.class);
+                startActivity(signoutIntent);
+            }
+        });
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

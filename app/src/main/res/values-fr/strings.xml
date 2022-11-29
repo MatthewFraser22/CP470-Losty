@@ -25,5 +25,10 @@
     <string name="error_form_not_valid">Veuillez remplir toutes les entrées</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Bonjour fragment vierge</string>
+    <string name="post_select_user_static">Détails de l\'affiche</string>
+    <string name="name">Nom: </string>
+    <string name="email">Email: </string>
+    <string name="item_profile_title">Détails de l\'article</string>
+    <string name="sign_out">se déconnecter</string>
 
 </resources>
