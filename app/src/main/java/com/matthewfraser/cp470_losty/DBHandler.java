@@ -27,6 +27,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String ID_COL = "id";
     private static final String NAME_COL = "name";
     private static final String EMAIL_COL = "email";
+    private static final String PHONE_COL = "phone";
     private static final String USERNAME_COL = "username";
     private static final String PASSWORD_COL = "password";
     private static final String PROFILE_IMAGE_COL = "profile_image";
@@ -46,6 +47,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME_COL + " TEXT,"
                 + EMAIL_COL + " TEXT,"
+                + PHONE_COL + " TEXT,"
                 + USERNAME_COL + " TEXT UNIQUE,"
                 + PASSWORD_COL + " TEXT,"
                 + PROFILE_IMAGE_COL + " BLOB)";
@@ -53,7 +55,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    public boolean addNewAccount(String name, String email, String username, String password) {
+    public boolean addNewAccount(String name, String email, String phone, String username, String password) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -61,6 +63,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         values.put(NAME_COL, name);
         values.put(EMAIL_COL, email);
+        values.put(PHONE_COL, phone);
         values.put(USERNAME_COL, username);
         values.put(PASSWORD_COL, password);
 
@@ -93,13 +96,16 @@ public class DBHandler extends SQLiteOpenHelper {
                         cursorAccounts.getString(1),
                         cursorAccounts.getString(2),
                         cursorAccounts.getString(3),
-                        cursorAccounts.getString(4));
+                        cursorAccounts.getString(4),
+                        cursorAccounts.getString(5));
 
                 model.setId(cursorAccounts.getString(0));
                 model.setName(cursorAccounts.getString(1));
                 model.setEmail(cursorAccounts.getString(2));
-                model.setUsername(cursorAccounts.getString(3));
-                model.setPassword(cursorAccounts.getString(4));
+                model.setPhone(cursorAccounts.getString(3));
+                model.setUsername(cursorAccounts.getString(4));
+                model.setPassword(cursorAccounts.getString(5));
+
 
                 accountModalArrayList.add(model);
 
