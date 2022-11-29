@@ -51,6 +51,19 @@
             android:inputType="textEmailAddress" />
 
         <TextView
+            android:id="@+id/accountPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="25dp"
+            android:text="@string/account_phone_number" />
+
+        <EditText
+            android:id="@+id/enterAccountPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone" />
+
+        <TextView
             android:id="@+id/accountUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
