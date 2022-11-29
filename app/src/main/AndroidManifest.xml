@@ -19,13 +19,20 @@
             android:value=".Login" />
 
         <activity
+            android:name=".ItemProfile"
+            android:exported="false"
+            android:parentActivityName=".Feed">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Feed"
             android:exported="false"
             android:parentActivityName=".Login">
             <meta-data
                 android:name="android.app.lib_name"
-                android:value=""
-                />
+                android:value="" />
         </activity>
         <activity
             android:name=".PostActivity"
@@ -34,8 +41,7 @@
             >
             <meta-data
                 android:name="android.app.lib_name"
-                android:value=""
-                />
+                android:value="" />
         </activity>
         <activity
             android:name=".HelpActivity"
@@ -44,8 +50,7 @@
             >
             <meta-data
                 android:name="android.app.lib_name"
-                android:value=""
-                />
+                android:value="" />
         </activity>
         <activity
             android:name=".AccountCreation"
