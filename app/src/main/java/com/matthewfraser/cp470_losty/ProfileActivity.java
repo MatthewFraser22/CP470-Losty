@@ -2,6 +2,7 @@ package com.matthewfraser.cp470_losty;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -26,6 +27,9 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProfileActivity extends AppCompatActivity {
 
     private Button saveButton;
@@ -35,6 +39,10 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView profilePictureImageView;
     public static final int PICK_IMAGE = 1;
     private RecyclerView postRecyclerView;
+    PostDatabaseHelper postDbHandler;
+    List<ItemModel> itemList;
+    ProfileItemAdapter adapter;
+    LinearLayoutManager layoutManager;
 
 
     @Override
@@ -50,15 +58,15 @@ public class ProfileActivity extends AppCompatActivity {
         profilePictureImageView = (ImageView)findViewById(R.id.profilePictureImageView);
         postRecyclerView = (RecyclerView)findViewById(R.id.postRecyclerView);
         DBHandler dbHandler = new DBHandler(ProfileActivity.this);
-        PostDatabaseHelper postDbHandler= new PostDatabaseHelper(ProfileActivity.this);
-
+        postDbHandler= new PostDatabaseHelper(ProfileActivity.this);
 
         // Populate profile picture and edit text fields with data
         byte[] profilePictureBlob = dbHandler.getProfileImage();
         SharedPreferences preferences = getSharedPreferences("losty", Context.MODE_PRIVATE);
+        String id = preferences.getString("userId", "");
         String email = preferences.getString("email", "");
         String name = preferences.getString("name", "");
-        String phoneNumber = preferences.getString("phoneNumber", "");
+        String phoneNumber = preferences.getString("phone", "");
 
         if (profilePictureBlob != null) {
             try {
@@ -140,7 +148,14 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         // Populate user's posts
-        Cursor postsCursor = postDbHandler.showData();
+        // Populate posts list
+        setToDatabaseData(id);
+        layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        postRecyclerView.setLayoutManager(layoutManager);
+        adapter = new ProfileItemAdapter(itemList);
+        postRecyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
         Menu menu = bottomNavigationView.getMenu();
@@ -175,6 +190,36 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void setToDatabaseData(String userId) {
+        Cursor cursor = postDbHandler.showData(userId);
+        itemList = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                Bitmap image = stringToBitmap(cursor.getString(1));
+                itemList.add(new ItemModel(image,
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getInt(0)));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+    }
+
+    private Bitmap stringToBitmap(String str) {
+        Uri uri = Uri.parse(str);
+        try {
+            return  MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
 
     }
 

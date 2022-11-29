@@ -114,26 +114,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/nameTextView"
                 tools:ignore="SpeakableTextPresentCheck" />
 
-            <TextView
-                android:id="@+id/postNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="61dp"
-                android:layout_marginTop="37dp"
-                android:text="Post 1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
-
-            <TextView
-                android:id="@+id/editTextTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="22dp"
-                android:layout_marginTop="36dp"
-                android:text="edit"
-                app:layout_constraintStart_toEndOf="@+id/postNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
-
             <Button
                 android:id="@+id/saveButton"
                 android:layout_width="wrap_content"
@@ -146,10 +126,10 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/postRecyclerView"
-                android:layout_width="57dp"
+                android:layout_width="match_parent"
                 android:layout_height="234dp"
-                android:layout_marginStart="177dp"
-                android:layout_marginTop="68dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
         </androidx.constraintlayout.widget.ConstraintLayout>

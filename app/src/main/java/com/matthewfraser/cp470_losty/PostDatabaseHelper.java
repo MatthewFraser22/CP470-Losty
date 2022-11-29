@@ -68,10 +68,21 @@ public class PostDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public Cursor showUserPostData(String email) {
+    public Cursor showData(String userId) {
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor data = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE email='" + email + "'", null);
+        Cursor data = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE USERID='" + userId + "'", null);
 
         return data;
+    }
+
+    public boolean deletePostById(int id) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        try {
+            database.delete(TABLE_NAME, "id = ?", new String[]{String.valueOf(id)});
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }

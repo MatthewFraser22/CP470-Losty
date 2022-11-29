@@ -42,7 +42,7 @@ public class AccountCreation extends AppCompatActivity {
             public void onClick(View view) {
                 String name = editName.getText().toString();
                 String email = editEmail.getText().toString();
-                String phone = editEmail.getText().toString();
+                String phone = editPhone.getText().toString();
                 String username = editUsername.getText().toString();
                 String password = editPassword.getText().toString();
 

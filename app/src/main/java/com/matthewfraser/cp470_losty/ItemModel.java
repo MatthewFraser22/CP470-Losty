@@ -9,6 +9,7 @@ public class ItemModel {
     private String brand;
     private String color;
     private String desc;
+    private int id;
 
     public ItemModel(Bitmap image, String name, String brand, String color, String desc) {
         this.image = image;
@@ -16,6 +17,15 @@ public class ItemModel {
         this.brand = brand;
         this.color = color;
         this.desc = desc;
+    }
+
+    public ItemModel(Bitmap image, String name, String brand, String color, String desc, int id) {
+        this.image = image;
+        this.name = name;
+        this.brand = brand;
+        this.color = color;
+        this.desc = desc;
+        this.id = id;
     }
 
     public Bitmap getImage() {
@@ -32,5 +42,8 @@ public class ItemModel {
     }
     public String getDesc() {
         return desc;
+    }
+    public int getId() {
+        return id;
     }
 }
