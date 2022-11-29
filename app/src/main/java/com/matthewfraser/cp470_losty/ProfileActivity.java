@@ -243,7 +243,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(ProfileActivity.this, "Failed to process image", Toast.LENGTH_LONG).show();
+//                Toast.makeText(ProfileActivity.this, "Failed to process image", Toast.LENGTH_LONG).show();
             }
         }
     }
