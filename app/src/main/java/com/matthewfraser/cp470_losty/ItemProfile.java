@@ -72,7 +72,7 @@ public class ItemProfile extends AppCompatActivity {
         Cursor userCursor = db.rawQuery("SELECT * FROM accounts WHERE id='" + userID + "'", null);
         if (userCursor.moveToFirst()) {
             do {
-                userName.setText(getString(R.string.name) + " " + userCursor.getString(4));
+                userName.setText(getString(R.string.name) + " " + userCursor.getString(1));
                 userEmail.setText(getString(R.string.email) + " " + userCursor.getString(2));
                 phoneButton.setText(userCursor.getString(3));
             } while (userCursor.moveToNext());

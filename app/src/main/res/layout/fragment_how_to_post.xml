@@ -4,7 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginLeft="5dp"
+
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="220dp"
     tools:context=".HowToPostFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,11 +15,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
         android:text="To make a post about an item that you have lost, tap on the post option at the bottom of the screen. Add a picture of the item, enter the name of the item, the brand of the item, the color of the item, and include a detailed description of the item. You can also include other information. Lastly, tap on  &quot;POST LOST ITEM &quot;"
         android:fontFamily="Arial"
+        android:textSize="20dp"
         android:textStyle="bold"
-
         />
 
 

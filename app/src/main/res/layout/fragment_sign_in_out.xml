@@ -3,16 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="5dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="220dp"
     tools:context=".SignInOutFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
         android:fontFamily="Arial"
         android:textStyle="bold"
+        android:textSize="20dp"
         android:text="To sign out, tap on the profile option at the bottom of the screen. At the bottom of the profile page you will see an option to sign out. Once signed out, you will be prompted to sign in." />
 
 </FrameLayout>

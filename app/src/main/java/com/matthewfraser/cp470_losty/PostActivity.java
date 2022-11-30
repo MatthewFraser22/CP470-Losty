@@ -134,7 +134,7 @@ public class PostActivity extends AppCompatActivity {
                                 progressBarStatus += 1;
 
                                 try {
-                                    Thread.sleep(50);
+                                    Thread.sleep(5);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
