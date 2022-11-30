@@ -67,7 +67,7 @@ public class CustomDeleteDialog extends Dialog implements android.view.View.OnCl
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
-            activity.finish();
+            activity.recreate();
             Toast.makeText(context, resultStr, Toast.LENGTH_LONG).show();
         }
     }

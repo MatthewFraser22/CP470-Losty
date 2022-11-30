@@ -13,6 +13,6 @@
         android:layout_marginTop="200dp"
         android:fontFamily="Arial"
         android:textStyle="bold"
-        android:text="To sign out, top on the profile option at the bottom of the screen. At the bottom of the profile page you will see an option to sign out. Once signed out, you will be prompted to sign in." />
+        android:text="To sign out, tap on the profile option at the bottom of the screen. At the bottom of the profile page you will see an option to sign out. Once signed out, you will be prompted to sign in." />
 
 </FrameLayout>
