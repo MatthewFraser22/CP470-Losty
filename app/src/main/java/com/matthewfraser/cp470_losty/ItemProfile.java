@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -84,22 +85,11 @@ public class ItemProfile extends AppCompatActivity {
                 postBrand.setText(postCursor.getString(3));
                 postColor.setText(postCursor.getString(4));
                 postDesc.setText(postCursor.getString(5));
-                postImage.setImageBitmap(stringToBitmap(postCursor.getString(1)));
+                byte[] blob = postDB.getItemImage(Integer.parseInt(postCursor.getString(0)));
+                Bitmap image = BitmapFactory.decodeByteArray(blob, 0, blob.length);
+                postImage.setImageBitmap(image);
             } while (postCursor.moveToNext());
         }
         postCursor.close();
     }
-
-    private Bitmap stringToBitmap(String str) {
-        Uri uri = Uri.parse(str);
-        try {
-            return  MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
-        }
-
-    }
-
-
 }

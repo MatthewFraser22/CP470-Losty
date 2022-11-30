@@ -10,9 +10,12 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,6 +29,9 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 
 public class PostActivity extends AppCompatActivity {
@@ -85,6 +91,16 @@ public class PostActivity extends AppCompatActivity {
                     Log.i(TAG, "ID: "+DBHandler.model.getId());
                     String id = DBHandler.model.getId();
 
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(postDatabase.currentContext.getContentResolver(), Uri.parse(lostItemPhotoString));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                    byte[] blob = stream.toByteArray();
+
                     Boolean insertData = postDatabase.addData(
                             lostItemPhotoString,
                             name,
@@ -92,7 +108,8 @@ public class PostActivity extends AppCompatActivity {
                             color,
                             description,
                             other,
-                            id
+                            id,
+                            blob
                     );
 
                     Log.i(TAG, "USER ID" + id);

@@ -122,7 +122,8 @@ public class Feed extends AppCompatActivity {
 
         if (cursor.moveToFirst()) {
             do {
-                Bitmap image = stringToBitmap(cursor.getString(1));
+                byte[] blob = db.getItemImage(Integer.parseInt(cursor.getString(0)));
+                Bitmap image = BitmapFactory.decodeByteArray(blob, 0, blob.length);
                 itemList.add(new ItemModel(image,
                         cursor.getString(2),
                         cursor.getString(3),
@@ -135,16 +136,4 @@ public class Feed extends AppCompatActivity {
 
         cursor.close();
     }
-
-    private Bitmap stringToBitmap(String str) {
-        Uri uri = Uri.parse(str);
-        try {
-            return  MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
-        }
-
-    }
-
 }
