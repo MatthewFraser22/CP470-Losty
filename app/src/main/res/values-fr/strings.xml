@@ -31,4 +31,11 @@
     <string name="item_profile_title">Détails de l\'article</string>
     <string name="sign_out">se déconnecter</string>
 
+    <!-- Profile strings  -->
+    <string name="profile_profile_picture_text">Image de Profil</string>
+    <string name="profile_update_email_text">E-mail de Mise à Jour</string>
+    <string name="profile_phone_number_text">Numéro de Téléphone</string>
+    <string name="profile_name_text">Nom</string>
+    <string name="profile_save_text">Enregistrer</string>
+
 </resources>

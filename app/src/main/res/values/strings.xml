@@ -30,4 +30,11 @@
     <string name="email">Email: </string>
     <string name="item_profile_title">Item Details</string>
     <string name="sign_out">Sign out</string>
+
+    <!-- Profile strings  -->
+    <string name="profile_profile_picture_text">Profile Picture</string>
+    <string name="profile_update_email_text">Update Email</string>
+    <string name="profile_phone_number_text">Phone Number</string>
+    <string name="profile_name_text">Name</string>
+    <string name="profile_save_text">Save</string>
 </resources>
