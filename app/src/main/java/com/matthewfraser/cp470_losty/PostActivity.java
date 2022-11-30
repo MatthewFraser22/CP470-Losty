@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.accounts.Account;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -89,8 +91,9 @@ public class PostActivity extends AppCompatActivity {
                     String other = otherEditText.getText().toString();
 
                     Log.i(TAG, "ID: "+DBHandler.model.getId());
-                    String id = DBHandler.model.getId();
-
+                    //String id = DBHandler.model.getId();
+                    SharedPreferences preferences = getSharedPreferences("losty", Context.MODE_PRIVATE);
+                    String id = preferences.getString("userId", "");
                     Bitmap bitmap = null;
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(postDatabase.currentContext.getContentResolver(), Uri.parse(lostItemPhotoString));
