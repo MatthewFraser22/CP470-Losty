@@ -38,12 +38,8 @@ public class ItemModel {
     public String getName() {
         return name;
     }
-    public String getBrand() {
-        return brand;
-    }
-    public String getColor() {
-        return color;
-    }
+    public String getBrand() { return brand; }
+    public String getColor() { return color; }
     public String getDesc() {
         return desc;
     }

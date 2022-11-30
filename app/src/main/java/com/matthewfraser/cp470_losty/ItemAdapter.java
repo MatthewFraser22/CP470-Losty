@@ -56,8 +56,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             super(itemView);
             imageView = itemView.findViewById(R.id.ItemPicture);
             nameView = itemView.findViewById(R.id.ItemName);
-            brandView = itemView.findViewById(R.id.ItemBrand);
-            colorView = itemView.findViewById(R.id.ItemColor);
+            //brandView = itemView.findViewById(R.id.ItemBrand);
+            //colorView = itemView.findViewById(R.id.ItemColor);
             descView = itemView.findViewById(R.id.ItemDescription);
             itemView.setOnClickListener(this);
         }
@@ -65,16 +65,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         public void setData(Bitmap image, String name, String brand, String color, String desc) {
             imageView.setImageBitmap(image);
             nameView.setText(name);
-            brandView.setText(brand);
-            colorView.setText(color);
+            //brandView.setText(brand);
+            //colorView.setText(color);
             descView.setText(desc);
         }
 
         public void setData(int image, String name, String brand, String color, String desc) {
             imageView.setImageResource(image);
             nameView.setText(name);
-            brandView.setText(brand);
-            colorView.setText(color);
+            //brandView.setText(brand);
+            //colorView.setText(color);
             descView.setText(desc);
         }
 

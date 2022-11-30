@@ -24,6 +24,7 @@ public class ItemProfile extends AppCompatActivity {
     TextView postBrand;
     TextView postColor;
     TextView postDesc;
+    TextView postOther;
     ImageView postImage;
 
     TextView userName;
@@ -40,6 +41,7 @@ public class ItemProfile extends AppCompatActivity {
        postBrand = findViewById(R.id.ItemProfileBrand);
        postColor = findViewById(R.id.ItemProfileColor);
        postDesc = findViewById(R.id.ItemProfileDesc);
+       postOther = findViewById(R.id.ItemProfileOther);
        postImage = findViewById(R.id.ItemProfileImage);
        userName = findViewById(R.id.UserProfileName);
        userEmail = findViewById(R.id.UserProfileEmail);
@@ -85,6 +87,7 @@ public class ItemProfile extends AppCompatActivity {
                 postBrand.setText(postCursor.getString(3));
                 postColor.setText(postCursor.getString(4));
                 postDesc.setText(postCursor.getString(5));
+                postOther.setText(postCursor.getString(6));
                 byte[] blob = postDB.getItemImage(Integer.parseInt(postCursor.getString(0)));
                 Bitmap image = BitmapFactory.decodeByteArray(blob, 0, blob.length);
                 postImage.setImageBitmap(image);
