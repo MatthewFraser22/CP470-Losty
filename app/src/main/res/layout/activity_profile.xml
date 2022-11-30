@@ -137,7 +137,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/postRecyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="234dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="60dp"
                         android:layout_marginTop="20dp"
                         app:layout_constraintStart_toStartOf="parent"
