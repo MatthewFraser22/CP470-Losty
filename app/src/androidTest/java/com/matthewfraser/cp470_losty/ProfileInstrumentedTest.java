@@ -56,7 +56,11 @@ public class ProfileInstrumentedTest {
                                         0),
                                 2),
                         isDisplayed()));
+<<<<<<< Updated upstream
         appCompatEditText.perform(replaceText(username), closeSoftKeyboard());
+=======
+        appCompatEditText.perform(replaceText("alexusername1"), closeSoftKeyboard());
+>>>>>>> Stashed changes
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.enterAccountEmail),
@@ -66,7 +70,11 @@ public class ProfileInstrumentedTest {
                                         0),
                                 4),
                         isDisplayed()));
+<<<<<<< Updated upstream
         appCompatEditText2.perform(replaceText("john@kohn.com"), closeSoftKeyboard());
+=======
+        appCompatEditText2.perform(replaceText("alex1@alex.com"), closeSoftKeyboard());
+>>>>>>> Stashed changes
 
         ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.enterAccountPhoneNumber),
