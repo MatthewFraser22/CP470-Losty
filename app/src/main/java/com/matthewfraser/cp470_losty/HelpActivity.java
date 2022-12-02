@@ -107,27 +107,6 @@ public class HelpActivity extends AppCompatActivity {
                 return false;
             }
         });
-//        binding = ActivityHelpBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-//        binding.bottomNavigation.setOnItemSelectedListener(item -> {
-//            switch (item.getItemId()) {
-//                case R.id.action_one:
-//
-//                    break;
-//                case R.id.action_two:
-//
-//                    startActivity(goPost);
-//                    break;
-//                case R.id.action_three:
-//
-//                    break;
-//                case R.id.action_four:
-//
-//                    break;
-//            }
-//            return true;
-//        });
-
 
     }
 
@@ -147,10 +126,6 @@ public class HelpActivity extends AppCompatActivity {
                 dialog.cancel();
             }
         });
-//        Window window = dialog.getWindow();
-//        WindowManager.LayoutParams layoutParams = window.getAttributes();
-//        layoutParams.gravity = Gravity.;
-//        window.setAttributes(layoutParams);
 
         dialog.show();
     }

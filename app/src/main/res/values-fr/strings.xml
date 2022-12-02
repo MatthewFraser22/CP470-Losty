@@ -9,7 +9,7 @@
     <string name="account_create_button">Créer un compte</string>
     <string name="login_title">connexion</string>
     <string name="login_button">connexion</string>
-
+    <string name="account_phone_number">Numéro de téléphone</string>
     <string name="lost_post_title">Vous avez perdu un objet ? Postez-le ici.</string>
     <string name="item_name">nom de l\'article</string>
     <string name="item_brand">marque de l\'article</string>
@@ -30,6 +30,7 @@
     <string name="email">Email: </string>
     <string name="item_profile_title">Détails de l\'article</string>
     <string name="sign_out">se déconnecter</string>
+    <string name="help_page_title">Page d\'aide</string>
 
     <!-- Profile strings  -->
     <string name="profile_profile_picture_text">Image de Profil</string>

@@ -211,28 +211,6 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
-//        binding = ActivityPostBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-//        binding.bottomNavigation.setOnItemSelectedListener(item -> {
-//            switch (item.getItemId()) {
-//                case R.id.action_one:
-////
-//
-//                    break;
-//                case R.id.action_two:
-//
-//                    break;
-//                case R.id.action_three:
-//
-//                    break;
-//                case R.id.action_four:
-//                    Intent help = new Intent(PostActivity.this, HelpActivity.class);
-//                    startActivity(help);
-//
-//                    break;
-//            }
-//            return true;
-//        });
     }
 
     private Boolean isPostValid() {
