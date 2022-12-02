@@ -47,10 +47,10 @@ public class LoginInstrumentedTest {
         textView2.check(matches(withText("")));
 
         ViewInteraction textView3 = onView(
-                allOf(withId(R.id.loginUsername), withText(username),
+                allOf(withId(R.id.loginUsername), withText("Username"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
                         isDisplayed()));
-        textView3.check(matches(withText(username)));
+        textView3.check(matches(withText("Username")));
 
         ViewInteraction editText = onView(
                 allOf(withId(R.id.enterLoginUsername),
