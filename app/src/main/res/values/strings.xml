@@ -37,7 +37,15 @@
     <string name="profile_phone_number_text">Phone Number</string>
     <string name="profile_name_text">Name</string>
     <string name="profile_save_text">Save</string>
-    
+
+
+    <!-- Help Page strings  -->
     <string name="help_page_title">Help Page</string>
+    <string name="how_to_post">How to post a lost item</string>
+    <string name="how_to_view_feed">How to view lost items near you</string>
+    <string name="how_to_sign_out">How to sign in/out</string>
+    <string name="about">About</string>
+    <string name="post_fragment">To make a post about an item that you have lost, tap on the post option at the bottom of the screen. Add a picture of the item, enter the name of the item, the brand of the item, the color of the item, and include a detailed description of the item. You can also include other information. Lastly, tap on  POST LOST ITEM </string>
+
 
 </resources>
