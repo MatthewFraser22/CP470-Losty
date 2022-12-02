@@ -41,6 +41,8 @@ public class HelpPageTest {
 
     @Test
     public void helpPageTest() {
+        RandomInfoGenerator randomInfo = new RandomInfoGenerator();
+        String username = randomInfo.username;
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.enterLoginUsername),
                         childAtPosition(
@@ -99,7 +101,7 @@ public class HelpPageTest {
                                         0),
                                 8),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText("evansurtel"), closeSoftKeyboard());
+        appCompatEditText5.perform(replaceText(username), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.enterAccountPassword),
@@ -129,7 +131,7 @@ public class HelpPageTest {
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText7.perform(replaceText("evansurtel"), closeSoftKeyboard());
+        appCompatEditText7.perform(replaceText(username), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText8 = onView(
                 allOf(withId(R.id.enterLoginPassword),
