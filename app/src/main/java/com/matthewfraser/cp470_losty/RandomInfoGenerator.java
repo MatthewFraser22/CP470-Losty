@@ -8,7 +8,7 @@ public class RandomInfoGenerator {
     public String email;
 
     public RandomInfoGenerator(){
-        byte[] array = new byte[7]; // length is bounded by 7
+        byte[] array = new byte[7];
         new Random().nextBytes(array);
         String username = new String(array, Charset.forName("UTF-8"));
         this.email = username + "@gmail.com";
