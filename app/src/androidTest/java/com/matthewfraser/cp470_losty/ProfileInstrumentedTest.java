@@ -35,6 +35,9 @@ public class ProfileInstrumentedTest {
 
     @Test
     public void profileInstrumentedTest() {
+        RandomInfoGenerator randomInfo = new RandomInfoGenerator();
+        String username = randomInfo.username;
+
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.accountCreationButton), withText("Create Account"),
                         childAtPosition(
@@ -53,7 +56,7 @@ public class ProfileInstrumentedTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("alexusername"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText(username), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.enterAccountEmail),
@@ -63,7 +66,7 @@ public class ProfileInstrumentedTest {
                                         0),
                                 4),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("alex@alex.com"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("john@kohn.com"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.enterAccountPhoneNumber),
@@ -83,7 +86,7 @@ public class ProfileInstrumentedTest {
                                         0),
                                 8),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText("alexusername"), closeSoftKeyboard());
+        appCompatEditText4.perform(replaceText(username), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.enterAccountPassword),
@@ -93,10 +96,10 @@ public class ProfileInstrumentedTest {
                                         0),
                                 10),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText("alexusername1"), closeSoftKeyboard());
+        appCompatEditText5.perform(replaceText("johmlm21"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.enterAccountPassword), withText("alexusername1"),
+                allOf(withId(R.id.enterAccountPassword), withText("johmlm21"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
@@ -123,7 +126,7 @@ public class ProfileInstrumentedTest {
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText7.perform(replaceText("alexusername"), closeSoftKeyboard());
+        appCompatEditText7.perform(replaceText(username), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText8 = onView(
                 allOf(withId(R.id.enterLoginPassword),
@@ -133,7 +136,7 @@ public class ProfileInstrumentedTest {
                                         0),
                                 5),
                         isDisplayed()));
-        appCompatEditText8.perform(replaceText("alexusername1"), closeSoftKeyboard());
+        appCompatEditText8.perform(replaceText("johmlm21"), closeSoftKeyboard());
 
         ViewInteraction materialButton3 = onView(
                 allOf(withId(R.id.loginButton), withText("Login"),
@@ -180,7 +183,7 @@ public class ProfileInstrumentedTest {
         textView3.check(matches(isDisplayed()));
 
         ViewInteraction editText = onView(
-                allOf(withId(R.id.editTextTextEmailAddress), withText("alex@alex.com"),
+                allOf(withId(R.id.editTextTextEmailAddress), withText("john@kohn.com"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
                         isDisplayed()));
         editText.check(matches(isDisplayed()));
@@ -192,7 +195,7 @@ public class ProfileInstrumentedTest {
         textView4.check(matches(isDisplayed()));
 
         ViewInteraction editText2 = onView(
-                allOf(withId(R.id.editTextTextPersonName), withText("alexusername"),
+                allOf(withId(R.id.editTextTextPersonName), withText(username),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
                         isDisplayed()));
         editText2.check(matches(isDisplayed()));
