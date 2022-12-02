@@ -7,6 +7,7 @@
     <string name="account_username">Nom d\'utilisateur</string>
     <string name="account_password">Mot de passe</string>
     <string name="account_create_button">Créer un compte</string>
+    <string name="account_phone_number">Numéro de téléphone</string>
     <string name="login_title">connexion</string>
     <string name="login_button">connexion</string>
     <string name="account_phone_number">Numéro de téléphone</string>
@@ -30,7 +31,7 @@
     <string name="email">Email: </string>
     <string name="item_profile_title">Détails de l\'article</string>
     <string name="sign_out">se déconnecter</string>
-    <string name="help_page_title">Page d\'aide</string>
+
 
     <!-- Profile strings  -->
     <string name="profile_profile_picture_text">Image de Profil</string>
@@ -38,5 +39,13 @@
     <string name="profile_phone_number_text">Numéro de Téléphone</string>
     <string name="profile_name_text">Nom</string>
     <string name="profile_save_text">Enregistrer</string>
+
+    <!-- Help Page strings  -->
+    <string name="help_page_title">Page d\'aide</string>
+    <string name="how_to_post">Comment poster un objet perdu</string>
+    <string name="how_to_view_feed">Comment voir les objets perdus près de chez vous</string>
+    <string name="how_to_sign_out">Comment se connecter/se déconnecter</string>
+    <string name="about">À propos de</string>
+    <string name="post_fragment">To make a post about an item that you have lost, tap on the post option at the bottom of the screen. Add a picture of the item, enter the name of the item, the brand of the item, the color of the item, and include a detailed description of the item. You can also include other information. Lastly, tap on  POST LOST ITEM </string>
 
 </resources>

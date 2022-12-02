@@ -28,7 +28,7 @@
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
 
-                android:text="How to post a lost item" />
+                android:text="@string/how_to_post" />
 
             <Button
                 android:id="@+id/feed"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:text="How to view lost items near you" />
+                android:text="@string/how_to_view_feed" />
 
             <Button
                 android:id="@+id/sign"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:text="How to sign in/out" />
+                android:text="@string/how_to_sign_out" />
 
             <Button
                 android:id="@+id/author"
@@ -52,7 +52,7 @@
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
-                android:text="About" />
+                android:text="@string/about" />
         </LinearLayout>
 
     </FrameLayout>
