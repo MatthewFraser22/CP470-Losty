@@ -40,6 +40,9 @@ public class FeedInstrumentedTest {
 
     @Test
     public void feedInstrumentedTest() {
+        RandomInfoGenerator randomInfo = new RandomInfoGenerator();
+        String username = randomInfo.username;
+
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.accountCreationButton), withText("Create Account"),
                         childAtPosition(
@@ -58,7 +61,7 @@ public class FeedInstrumentedTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("test"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText(username), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.enterAccountEmail),
@@ -88,7 +91,7 @@ public class FeedInstrumentedTest {
                                         0),
                                 8),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText("test"), closeSoftKeyboard());
+        appCompatEditText4.perform(replaceText(username), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.enterAccountPassword),
@@ -118,7 +121,7 @@ public class FeedInstrumentedTest {
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText6.perform(replaceText("test"), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText(username), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText7 = onView(
                 allOf(withId(R.id.enterLoginPassword),

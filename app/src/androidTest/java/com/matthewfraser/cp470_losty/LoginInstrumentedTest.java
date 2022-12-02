@@ -31,6 +31,9 @@ public class LoginInstrumentedTest {
 
     @Test
     public void loginInstrumentedTest() {
+        RandomInfoGenerator randomInfo = new RandomInfoGenerator();
+        String username = randomInfo.username;
+        
         ViewInteraction textView = onView(
                 allOf(withId(R.id.loginTitle), withText("Login"),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
@@ -44,10 +47,10 @@ public class LoginInstrumentedTest {
         textView2.check(matches(withText("")));
 
         ViewInteraction textView3 = onView(
-                allOf(withId(R.id.loginUsername), withText("Username"),
+                allOf(withId(R.id.loginUsername), withText(username),
                         withParent(withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class))),
                         isDisplayed()));
-        textView3.check(matches(withText("Username")));
+        textView3.check(matches(withText(username)));
 
         ViewInteraction editText = onView(
                 allOf(withId(R.id.enterLoginUsername),
