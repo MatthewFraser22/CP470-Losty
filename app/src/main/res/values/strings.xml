@@ -46,6 +46,8 @@
     <string name="how_to_sign_out">How to sign in/out</string>
     <string name="about">About</string>
     <string name="post_fragment">To make a post about an item that you have lost, tap on the post option at the bottom of the screen. Add a picture of the item, enter the name of the item, the brand of the item, the color of the item, and include a detailed description of the item. You can also include other information. Lastly, tap on  POST LOST ITEM </string>
+    <string name="feed_fragment">To view what other users have lost, tap on the home option at the bottom of the screen. Here you will find items that other people have lost.</string>
+    <string name="sign_fragment">To sign out, tap on the profile option at the bottom of the screen. At the bottom of the profile page you will see an option to sign out. Once signed out, you will be prompted to sign in.</string>
 
 
 </resources>

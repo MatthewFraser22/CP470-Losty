@@ -46,6 +46,8 @@
     <string name="how_to_view_feed">Comment voir les objets perdus près de chez vous</string>
     <string name="how_to_sign_out">Comment se connecter/se déconnecter</string>
     <string name="about">À propos de</string>
-    <string name="post_fragment">To make a post about an item that you have lost, tap on the post option at the bottom of the screen. Add a picture of the item, enter the name of the item, the brand of the item, the color of the item, and include a detailed description of the item. You can also include other information. Lastly, tap on  POST LOST ITEM </string>
+    <string name="post_fragment">Pour publier un article sur un objet que vous avez perdu, appuyez sur l\'option de publication en bas de l\'écran. Ajoutez une photo de l\'article, entrez le nom de l\'article, la marque de l\'article, la couleur de l\'article et incluez une description détaillée de l\'article. Vous pouvez également inclure d\'autres informations. Enfin, appuyez sur POSTER L\'ARTICLE PERDU</string>
+    <string name="feed_fragment">Pour voir ce que les autres utilisateurs ont perdu, appuyez sur l\'option d\'accueil en bas de l\'écran. Vous y trouverez des objets que d\'autres personnes ont perdus.</string>
+    <string name="sign_fragment">Pour vous déconnecter, appuyez sur l\'option de profil en bas de l\'écran. Au bas de la page de profil, vous verrez une option pour vous déconnecter. Une fois déconnecté, vous serez invité à vous connecter.</string>
 
 </resources>
