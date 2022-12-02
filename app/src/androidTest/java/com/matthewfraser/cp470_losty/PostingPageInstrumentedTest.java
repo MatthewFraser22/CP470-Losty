@@ -2,11 +2,17 @@ package com.matthewfraser.cp470_losty;
 
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.*;
-import static androidx.test.espresso.assertion.ViewAssertions.*;
-import static androidx.test.espresso.matcher.ViewMatchers.*;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.replaceText;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.core.AllOf.allOf;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,14 +33,14 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ProfileInstrumentedTest {
+public class PostingPageInstrumentedTest {
 
     @Rule
     public ActivityScenarioRule<Login> mActivityScenarioRule =
             new ActivityScenarioRule<>(Login.class);
 
     @Test
-    public void profileInstrumentedTest() {
+    public void postingPageInstrumentedTest() {
         RandomInfoGenerator randomInfo = new RandomInfoGenerator();
         String username = randomInfo.username;
 
@@ -58,8 +64,6 @@ public class ProfileInstrumentedTest {
                         isDisplayed()));
         appCompatEditText.perform(replaceText(username), closeSoftKeyboard());
 
-        appCompatEditText.perform(replaceText("alexusername1"), closeSoftKeyboard());
-
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.enterAccountEmail),
                         childAtPosition(
@@ -68,10 +72,7 @@ public class ProfileInstrumentedTest {
                                         0),
                                 4),
                         isDisplayed()));
-
-        appCompatEditText2.perform(replaceText("john@kohn.com"), closeSoftKeyboard());
-
-        appCompatEditText2.perform(replaceText("alex1@alex.com"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("@."), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.enterAccountPhoneNumber),
@@ -81,7 +82,7 @@ public class ProfileInstrumentedTest {
                                         0),
                                 6),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("1234561234"), closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText("3733432"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText4 = onView(
                 allOf(withId(R.id.enterAccountUsername),
@@ -101,17 +102,7 @@ public class ProfileInstrumentedTest {
                                         0),
                                 10),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText("johmlm21"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.enterAccountPassword), withText("johmlm21"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        0),
-                                10),
-                        isDisplayed()));
-        appCompatEditText6.perform(pressImeActionButton());
+        appCompatEditText5.perform(replaceText("12345678"), closeSoftKeyboard());
 
         ViewInteraction materialButton2 = onView(
                 allOf(withId(R.id.accountCreationButton), withText("Create Account"),
@@ -123,7 +114,7 @@ public class ProfileInstrumentedTest {
                         isDisplayed()));
         materialButton2.perform(click());
 
-        ViewInteraction appCompatEditText7 = onView(
+        ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.enterLoginUsername),
                         childAtPosition(
                                 childAtPosition(
@@ -131,9 +122,9 @@ public class ProfileInstrumentedTest {
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText7.perform(replaceText(username), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText(username), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText8 = onView(
+        ViewInteraction appCompatEditText7 = onView(
                 allOf(withId(R.id.enterLoginPassword),
                         childAtPosition(
                                 childAtPosition(
@@ -141,7 +132,7 @@ public class ProfileInstrumentedTest {
                                         0),
                                 5),
                         isDisplayed()));
-        appCompatEditText8.perform(replaceText("johmlm21"), closeSoftKeyboard());
+        appCompatEditText7.perform(replaceText("12345678"), closeSoftKeyboard());
 
         ViewInteraction materialButton3 = onView(
                 allOf(withId(R.id.loginButton), withText("Login"),
@@ -153,90 +144,27 @@ public class ProfileInstrumentedTest {
                         isDisplayed()));
         materialButton3.perform(click());
 
-        ViewInteraction bottomNavigationItemView = onView(
-                allOf(withId(R.id.action_three), withContentDescription("Profile"),
+        ViewInteraction materialButton4 = onView(
+                allOf(withId(R.id.createAPost), withText("+"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.bottomNavigation),
+                                        withId(R.id.frameLayout),
                                         0),
-                                2),
+                                0),
                         isDisplayed()));
-        bottomNavigationItemView.perform(click());
+        materialButton4.perform(click());
 
-        ViewInteraction imageView = onView(
-                allOf(withId(R.id.profilePictureImageView),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+        ViewInteraction imageButton = onView(
+                allOf(withId(R.id.imageButton),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
                         isDisplayed()));
-        imageView.check(matches(isDisplayed()));
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.profilePictureTextView), withText("Profile Picture"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed()));
-        textView.check(matches(isDisplayed()));
-
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.updateEmailTextView), withText("Update Email"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed()));
-        textView2.check(matches(isDisplayed()));
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.updateEmailTextView), withText("Update Email"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed()));
-        textView3.check(matches(isDisplayed()));
-
-        ViewInteraction editText = onView(
-                allOf(withId(R.id.editTextTextEmailAddress), withText("john@kohn.com"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed()));
-        editText.check(matches(isDisplayed()));
-
-        ViewInteraction textView4 = onView(
-                allOf(withId(R.id.nameTextView), withText("Name"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed()));
-        textView4.check(matches(isDisplayed()));
-
-        ViewInteraction editText2 = onView(
-                allOf(withId(R.id.editTextTextPersonName), withText(username),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed()));
-        editText2.check(matches(isDisplayed()));
-
-        ViewInteraction textView5 = onView(
-                allOf(withId(R.id.phoneNumberTextView), withText("Phone Number"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed()));
-        textView5.check(matches(isDisplayed()));
-
-        ViewInteraction editText3 = onView(
-                allOf(withId(R.id.editTextPhone), withText("1234561234"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed()));
-        editText3.check(matches(isDisplayed()));
+        imageButton.check(matches(isDisplayed()));
 
         ViewInteraction button = onView(
-                allOf(withId(R.id.saveButton), withText("SAVE"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
+                allOf(withId(R.id.postButton), withText("POST LOST ITEM"),
+                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.ScrollView.class))),
                         isDisplayed()));
         button.check(matches(isDisplayed()));
-
-        ViewInteraction button2 = onView(
-                allOf(withId(R.id.signoutButton), withText("SIGN OUT"),
-                        withParent(withParent(IsInstanceOf.<View>instanceOf(android.widget.LinearLayout.class))),
-                        isDisplayed()));
-        button2.check(matches(isDisplayed()));
-
-        ViewInteraction appCompatImageView = onView(
-                allOf(withId(R.id.profilePictureImageView),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        0),
-                                0)));
-        appCompatImageView.perform(scrollTo(), click());
     }
 
     private static Matcher<View> childAtPosition(
