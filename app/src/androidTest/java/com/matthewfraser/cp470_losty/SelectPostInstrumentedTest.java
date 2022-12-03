@@ -10,6 +10,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -34,14 +35,18 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class SelectedPostInstrumentedTest {
+public class SelectPostInstrumentedTest {
 
     @Rule
     public ActivityScenarioRule<Login> mActivityScenarioRule =
             new ActivityScenarioRule<>(Login.class);
 
     @Test
-    public void selectedPostInstrumentedTest() {
+    public void selectPostInstrumentedTest() {
+        /*
+        RandomInfoGenerator randomInfo = new RandomInfoGenerator();
+        String username = randomInfo.username;
+
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.accountCreationButton), withText("Create Account"),
                         childAtPosition(
@@ -60,7 +65,7 @@ public class SelectedPostInstrumentedTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("test"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("tes"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.enterAccountEmail),
@@ -70,9 +75,29 @@ public class SelectedPostInstrumentedTest {
                                         0),
                                 4),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("test@.ca"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("test@gmail.ca"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.enterAccountName), withText("tes"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText3.perform(replaceText("test"));
+
+        ViewInteraction appCompatEditText4 = onView(
+                allOf(withId(R.id.enterAccountName), withText("test"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText4.perform(closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.enterAccountPhoneNumber),
                         childAtPosition(
                                 childAtPosition(
@@ -80,9 +105,9 @@ public class SelectedPostInstrumentedTest {
                                         0),
                                 6),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("1231231234"), closeSoftKeyboard());
+        appCompatEditText5.perform(replaceText("1231231234"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText4 = onView(
+        ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.enterAccountUsername),
                         childAtPosition(
                                 childAtPosition(
@@ -90,9 +115,9 @@ public class SelectedPostInstrumentedTest {
                                         0),
                                 8),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText("test"), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText(username), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText5 = onView(
+        ViewInteraction appCompatEditText7 = onView(
                 allOf(withId(R.id.enterAccountPassword),
                         childAtPosition(
                                 childAtPosition(
@@ -100,7 +125,7 @@ public class SelectedPostInstrumentedTest {
                                         0),
                                 10),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText("test1234"), closeSoftKeyboard());
+        appCompatEditText7.perform(replaceText("test1234"), closeSoftKeyboard());
 
         ViewInteraction materialButton2 = onView(
                 allOf(withId(R.id.accountCreationButton), withText("Create Account"),
@@ -112,7 +137,7 @@ public class SelectedPostInstrumentedTest {
                         isDisplayed()));
         materialButton2.perform(click());
 
-        ViewInteraction appCompatEditText6 = onView(
+        ViewInteraction appCompatEditText8 = onView(
                 allOf(withId(R.id.enterLoginUsername),
                         childAtPosition(
                                 childAtPosition(
@@ -120,9 +145,9 @@ public class SelectedPostInstrumentedTest {
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText6.perform(replaceText("test"), closeSoftKeyboard());
+        appCompatEditText8.perform(replaceText(username), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText7 = onView(
+        ViewInteraction appCompatEditText9 = onView(
                 allOf(withId(R.id.enterLoginPassword),
                         childAtPosition(
                                 childAtPosition(
@@ -130,7 +155,7 @@ public class SelectedPostInstrumentedTest {
                                         0),
                                 5),
                         isDisplayed()));
-        appCompatEditText7.perform(replaceText("test1234"), closeSoftKeyboard());
+        appCompatEditText9.perform(replaceText("test1234"), closeSoftKeyboard());
 
         ViewInteraction materialButton3 = onView(
                 allOf(withId(R.id.loginButton), withText("Login"),
@@ -142,15 +167,15 @@ public class SelectedPostInstrumentedTest {
                         isDisplayed()));
         materialButton3.perform(click());
 
-        ViewInteraction materialButton4 = onView(
-                allOf(withId(R.id.createAPost), withText("+"),
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.action_two), withContentDescription("Post"),
                         childAtPosition(
                                 childAtPosition(
-                                        withId(R.id.frameLayout),
+                                        withId(R.id.bottomNavigation),
                                         0),
-                                0),
+                                1),
                         isDisplayed()));
-        materialButton4.perform(click());
+        bottomNavigationItemView.perform(click());
 
         ViewInteraction appCompatImageButton = onView(
                 allOf(withId(R.id.imageButton),
@@ -161,59 +186,59 @@ public class SelectedPostInstrumentedTest {
                                 2)));
         appCompatImageButton.perform(scrollTo(), click());
 
-        ViewInteraction appCompatEditText8 = onView(
+        ViewInteraction appCompatEditText10 = onView(
                 allOf(withId(R.id.lost_item_edit_text),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 3)));
-        appCompatEditText8.perform(scrollTo(), replaceText("test"), closeSoftKeyboard());
+        appCompatEditText10.perform(scrollTo(), replaceText("test"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText9 = onView(
+        ViewInteraction appCompatEditText11 = onView(
                 allOf(withId(R.id.lost_item_brand_edit_text),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 5)));
-        appCompatEditText9.perform(scrollTo(), replaceText("test"), closeSoftKeyboard());
+        appCompatEditText11.perform(scrollTo(), replaceText("test"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText10 = onView(
+        ViewInteraction appCompatEditText12 = onView(
                 allOf(withId(R.id.lost_item_color_edit_text),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 7)));
-        appCompatEditText10.perform(scrollTo(), replaceText("test"), closeSoftKeyboard());
+        appCompatEditText12.perform(scrollTo(), replaceText("test"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText11 = onView(
+        ViewInteraction appCompatEditText13 = onView(
                 allOf(withId(R.id.lost_item_description_edit_text),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 9)));
-        appCompatEditText11.perform(scrollTo(), replaceText("test"), closeSoftKeyboard());
+        appCompatEditText13.perform(scrollTo(), replaceText("test"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText12 = onView(
+        ViewInteraction appCompatEditText14 = onView(
                 allOf(withId(R.id.lost_item_other_edit_text),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 11)));
-        appCompatEditText12.perform(scrollTo(), replaceText("test"), closeSoftKeyboard());
+        appCompatEditText14.perform(scrollTo(), replaceText("test"), closeSoftKeyboard());
 
-        ViewInteraction materialButton5 = onView(
+        ViewInteraction materialButton4 = onView(
                 allOf(withId(R.id.postButton), withText("Post Lost Item"),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.ScrollView")),
                                         0),
                                 13)));
-        materialButton5.perform(scrollTo(), click());
+        materialButton4.perform(scrollTo(), click());
 
         ViewInteraction recyclerView = onView(
                 allOf(withId(R.id.FeedRecycler),
@@ -271,16 +296,34 @@ public class SelectedPostInstrumentedTest {
         textView8.check(matches(withText("Name: test")));
 
         ViewInteraction textView9 = onView(
-                allOf(withId(R.id.UserProfileEmail), withText("Email: test@.ca"),
+                allOf(withId(R.id.UserProfileEmail), withText("Email: test@gmail.ca"),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        textView9.check(matches(withText("Email: test@.ca")));
+        textView9.check(matches(withText("Email: test@gmail.ca")));
+
+        ViewInteraction textView10 = onView(
+                allOf(withId(R.id.UserProfileName), withText("Name: test"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        textView10.check(matches(withText("Name: test")));
+
+        ViewInteraction textView11 = onView(
+                allOf(withId(R.id.UserProfileEmail), withText("Email: test@gmail.ca"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        textView11.check(matches(withText("Email: test@gmail.ca")));
 
         ViewInteraction imageView = onView(
                 allOf(withId(R.id.ItemProfileImage),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
         imageView.check(matches(isDisplayed()));
+
+        ViewInteraction imageView2 = onView(
+                allOf(withId(R.id.ItemProfileImage),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        imageView2.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(
@@ -300,5 +343,8 @@ public class SelectedPostInstrumentedTest {
                         && view.equals(((ViewGroup) parent).getChildAt(position));
             }
         };
+
+         */
     }
 }
+
